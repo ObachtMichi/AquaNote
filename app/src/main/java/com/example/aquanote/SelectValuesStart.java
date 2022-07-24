@@ -83,6 +83,7 @@ public class SelectValuesStart extends AppCompatActivity{
                                     arr[i].setText(customName.getText().toString());
                                     arr[i].setAlpha(1);
                                     arr[i].setClickable(true);
+                                    arr[i].setChecked(true);
                                     textCountLeft.setText(counter + " left");
                                     counter--;
                                     i++;
