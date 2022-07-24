@@ -10,6 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText volumeAquaInput;
     private Button buttonSelectValue;
     private ImageButton addPhotoButton;
+    private TextView immNameTextField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,21 @@ public class MainActivity extends AppCompatActivity {
         volumeAquaInput = (EditText) findViewById(R.id.volumeAquaInput);
         buttonSelectValue = (Button) findViewById(R.id.buttonSelectValue);
         addPhotoButton = (ImageButton) findViewById(R.id.addPhotoButton);
+        immNameTextField = (TextView) findViewById(R.id.immNameTextField);
+
+        buttonSelectValue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!nameAquaInput.getText().toString().equals("")){
+                    nextActivity();
+                } else {
+                    Animation shake = AnimationUtils.loadAnimation(MainActivity.this, R.anim.shake);
+                    nameAquaInput.startAnimation(shake);
+                    immNameTextField.startAnimation(shake);
+
+                }
+            }
+        });
 
         addPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void nextActivity(View v){
+    public void nextActivity(){
         Intent i = new Intent(this, SelectValuesStart.class);
         startActivity(i);
     }

@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select Values"
+        android:fontFamily="@font/montserrat"
         android:gravity="center"
         android:textSize="30dp"/>
     <TextView
@@ -29,6 +30,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:fontFamily="@font/montserrat"
             android:layout_weight="1"
             android:text="Add custom Value"
             android:id="@+id/addCustomValue">
@@ -41,6 +43,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:fontFamily="@font/montserrat"
             android:layout_weight="1"
             android:text="Continue">
         </Button>
@@ -60,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:fontFamily="@font/montserrat"
             android:id="@+id/textCountLeft"
             android:layout_weight="1"
             android:text="6 left"/>
@@ -73,7 +77,6 @@
     </LinearLayout>
 
 
-
 <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,29 +87,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="20dp"
+            android:fontFamily="@font/montserrat"
             android:text="Alkalinity" />
+
         <CheckBox
             android:id="@+id/checkCalcium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="@font/montserrat"
             android:textSize="20dp"
             android:text="Calcium" />
         <CheckBox
             android:id="@+id/checkMagnesium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="@font/montserrat"
             android:textSize="20dp"
             android:text="Magnesium" />
         <CheckBox
             android:id="@+id/checkNitrate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="@font/montserrat"
             android:textSize="20dp"
             android:text="Nitrate" />
 
     <CheckBox
         android:id="@+id/checkPhostphate"
         android:layout_width="match_parent"
+        android:fontFamily="@font/montserrat"
         android:layout_height="match_parent"
         android:textSize="20dp"
         android:text="Phosphate" />
@@ -114,6 +123,7 @@
         android:id="@+id/customTwo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="@font/montserrat"
         android:textSize="20dp"
         android:clickable="false"
         android:alpha="0"
@@ -122,6 +132,7 @@
         android:id="@+id/customThree"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="@font/montserrat"
         android:textSize="20dp"
         android:clickable="false"
         android:alpha="0"
@@ -130,6 +141,7 @@
         android:id="@+id/customFour"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="@font/montserrat"
         android:textSize="20dp"
         android:clickable="false"
         android:alpha="0"
@@ -138,6 +150,7 @@
         android:id="@+id/customFive"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="@font/montserrat"
         android:textSize="20dp"
         android:clickable="false"
         android:alpha="0"
@@ -146,6 +159,7 @@
         android:id="@+id/customSix"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="@font/montserrat"
         android:textSize="20dp"
         android:clickable="false"
         android:alpha="0"
@@ -154,6 +168,7 @@
         android:id="@+id/customSeven"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="@font/montserrat"
         android:textSize="20dp"
         android:alpha="0"
         android:clickable="false"
@@ -162,16 +177,11 @@
         android:id="@+id/customEight"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="@font/montserrat"
         android:textSize="20dp"
         android:alpha="0"
         android:clickable="false"
         android:text="X" />
- </LinearLayout>
-
-
-
-
-
-
+    </LinearLayout>
 </LinearLayout>
 

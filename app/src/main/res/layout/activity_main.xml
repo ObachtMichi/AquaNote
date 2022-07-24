@@ -10,7 +10,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0"/>
+        android:layout_weight="0"
+        android:fontFamily="@font/montserrat"
+        android:text="Add photo:" />
 
 
     <ImageButton
@@ -36,14 +38,18 @@
             android:layout_height="match_parent"
             android:layout_weight="1.9">
         </TextView>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Name: *"
-                android:textSize="30dp"
-                android:gravity="center_vertical"
-                android:layout_weight="1"
-                android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/immNameTextField"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_vertical"
+            android:hint="Name: *"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/nameAquaInput"
@@ -66,14 +72,17 @@
             android:layout_height="match_parent"
             android:layout_weight="1.9">
         </TextView>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Total Volume: "
-            android:gravity="center_vertical"
-            android:textSize="30dp"
             android:layout_weight="1"
-            android:textColor="@color/black"/>
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_vertical"
+            android:hint="Total Volume: "
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/volumeAquaInput"
@@ -101,9 +110,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
             android:layout_gravity="left"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_vertical"
             android:text="Erforderlich *"
             android:textSize="10dp" />
 
@@ -112,7 +122,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="nextActivity"
+            android:fontFamily="@font/montserrat"
             android:text="Continue" />
 
 
