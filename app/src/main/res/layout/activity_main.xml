@@ -40,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="213dp"
         android:layout_weight="1.5"
+        android:id="@+id/addPhotoButton"
         android:src="@drawable/ic_launcher_background"
         tools:ignore="SpeakableTextPresentCheck" />
 

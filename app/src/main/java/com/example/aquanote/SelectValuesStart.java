@@ -3,6 +3,7 @@ package com.example.aquanote;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
@@ -25,8 +26,11 @@ public class SelectValuesStart extends AppCompatActivity{
     private CheckBox customSix;
     private CheckBox customSeven;
     private CheckBox customEight;
+    private TextView textCountLeft;
     EditText customName;
     private int i = 1;
+    int counter = 5;
+
 
 
 
@@ -42,6 +46,7 @@ public class SelectValuesStart extends AppCompatActivity{
         customSix = (CheckBox) findViewById(R.id.customSix);
         customSeven = (CheckBox) findViewById(R.id.customSeven);
         customEight = (CheckBox) findViewById(R.id.customEight);
+        textCountLeft = (TextView)findViewById(R.id.textCountLeft);
 
         CheckBox[] arr = new CheckBox[8];
         arr[1] = customTwo;
@@ -71,12 +76,15 @@ public class SelectValuesStart extends AppCompatActivity{
                             }
                         });
                         dialog.setPositiveButton("Set", new DialogInterface.OnClickListener() {
+                            @SuppressLint("SetTextI18n")
                             @Override
                             public void onClick(DialogInterface dialogInterface, int j) {
                                 if(!customName.getText().toString().equals("")) {
                                     arr[i].setText(customName.getText().toString());
                                     arr[i].setAlpha(1);
                                     arr[i].setClickable(true);
+                                    textCountLeft.setText(counter + " left");
+                                    counter--;
                                     i++;
                                 }
 
@@ -85,12 +93,7 @@ public class SelectValuesStart extends AppCompatActivity{
                         dialog.show();
                     }
                     }
-
             });
-
-
-
-
     }
 
 
