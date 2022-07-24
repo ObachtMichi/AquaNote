@@ -91,9 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textSize="20dp"
-        android:clickable="false"
-        android:alpha="0"
-        android:text="X" />
+        android:text="Phosphate" />
     <CheckBox
         android:id="@+id/customTwo"
         android:layout_width="match_parent"
@@ -135,7 +133,7 @@
         android:alpha="0"
         android:text="X" />
     <CheckBox
-        android:id="@+id/customSix"
+        android:id="@+id/customSeven"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textSize="20dp"
@@ -143,7 +141,7 @@
         android:clickable="false"
         android:text="X" />
     <CheckBox
-        android:id="@+id/customSeven"
+        android:id="@+id/customEight"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textSize="20dp"

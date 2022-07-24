@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
-public class SelectValuesStart extends AppCompatActivity {
+public class SelectValuesStart extends AppCompatActivity{
 
     private Button addCustomValue;
     private CheckBox customOne;
@@ -17,7 +17,8 @@ public class SelectValuesStart extends AppCompatActivity {
     private CheckBox customFive;
     private CheckBox customSix;
     private CheckBox customSeven;
-    private CheckBox tmp = customOne;
+    private CheckBox customEight;
+    private int i = 0;
 
 
 
@@ -33,7 +34,33 @@ public class SelectValuesStart extends AppCompatActivity {
         customFive = (CheckBox) findViewById(R.id.customFive);
         customSix = (CheckBox) findViewById(R.id.customSix);
         customSeven = (CheckBox) findViewById(R.id.customSeven);
-        addCustomValueButtonAction();
+        customEight = (CheckBox) findViewById(R.id.customEight);
+
+        CheckBox[] arr = new CheckBox[8];
+        arr[0] = customOne;
+        arr[1] = customTwo;
+        arr[2] = customThree;
+        arr[3] = customFour;
+        arr[4] = customFive;
+        arr[5] = customSix;
+        arr[6] = customSeven;
+        arr[7] = customEight;
+
+
+            addCustomValue.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if( i < 7){
+                        i++;
+                        arr[i].setAlpha(1);
+                        arr[i].setClickable(true);
+                    }
+                    }
+
+            });
+
+
+
 
     }
 
