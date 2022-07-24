@@ -73,11 +73,12 @@ public class SelectValuesStart extends AppCompatActivity{
                         dialog.setPositiveButton("Set", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int j) {
-                                String tmp = customName.getText().toString();
-                                arr[i].setText(customName.getText());
-                                arr[i].setAlpha(1);
-                                arr[i].setClickable(true);
-                                i++;
+                                if(!customName.getText().toString().equals("")) {
+                                    arr[i].setText(customName.getText().toString());
+                                    arr[i].setAlpha(1);
+                                    arr[i].setClickable(true);
+                                    i++;
+                                }
 
                             }
                         });
