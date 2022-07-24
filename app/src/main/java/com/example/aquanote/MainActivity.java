@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
         volumeAquaInput = (EditText) findViewById(R.id.volumeAquaInput);
         buttonSelectValue = (Button) findViewById(R.id.buttonSelectValue);
 
-
-
     }
 
     public void nextActivity(View v){
