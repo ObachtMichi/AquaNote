@@ -68,26 +68,26 @@
             android:textSize="20dp"
             android:text="Alkalinity" />
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkCalcium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="20dp"
             android:text="Calcium" />
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkMagnesium"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="20dp"
             android:text="Magnesium" />
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkNitrate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="20dp"
             android:text="Nitrate" />
 
     <CheckBox
-        android:id="@+id/customOne"
+        android:id="@+id/checkPhostphate"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textSize="20dp"
@@ -148,7 +148,7 @@
         android:alpha="0"
         android:clickable="false"
         android:text="X" />
-    </LinearLayout>
+ </LinearLayout>
 
 
 

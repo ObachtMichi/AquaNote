@@ -1,11 +1,18 @@
 package com.example.aquanote;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class SelectValuesStart extends AppCompatActivity{
 
@@ -18,7 +25,8 @@ public class SelectValuesStart extends AppCompatActivity{
     private CheckBox customSix;
     private CheckBox customSeven;
     private CheckBox customEight;
-    private int i = 0;
+    EditText customName;
+    private int i = 1;
 
 
 
@@ -27,7 +35,6 @@ public class SelectValuesStart extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_values_start);
         addCustomValue = (Button) findViewById(R.id.addCustomValue);
-        customOne = (CheckBox) findViewById(R.id.customOne);
         customTwo = (CheckBox) findViewById(R.id.customTwo);
         customThree = (CheckBox) findViewById(R.id.customThree);
         customFour = (CheckBox) findViewById(R.id.customFour);
@@ -37,7 +44,6 @@ public class SelectValuesStart extends AppCompatActivity{
         customEight = (CheckBox) findViewById(R.id.customEight);
 
         CheckBox[] arr = new CheckBox[8];
-        arr[0] = customOne;
         arr[1] = customTwo;
         arr[2] = customThree;
         arr[3] = customFour;
@@ -50,10 +56,32 @@ public class SelectValuesStart extends AppCompatActivity{
             addCustomValue.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
                     if( i < 7){
-                        i++;
-                        arr[i].setAlpha(1);
-                        arr[i].setClickable(true);
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(SelectValuesStart.this);
+                        customName = new EditText(SelectValuesStart.this);
+                        customName.setInputType(InputType.TYPE_CLASS_TEXT);
+                        dialog.setView(customName);
+                        dialog.setCancelable(true);
+                        dialog.setTitle("Please enter a name");
+                        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int j) {
+                                dialogInterface.cancel();
+                            }
+                        });
+                        dialog.setPositiveButton("Set", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int j) {
+                                String tmp = customName.getText().toString();
+                                arr[i].setText(customName.getText());
+                                arr[i].setAlpha(1);
+                                arr[i].setClickable(true);
+                                i++;
+
+                            }
+                        });
+                        dialog.show();
                     }
                     }
 
