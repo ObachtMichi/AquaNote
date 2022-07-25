@@ -13,9 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AquaNote"
         tools:targetApi="31">
+        <activity
+            android:name=".activity_home_screen"
+            android:exported="false"
+            android:label=""/>
+
         <meta-data
             android:name="com.google.android.actions"
-            android:value=""/>
+            android:value="" />
 
         <activity
             android:name=".SelectValuesStart"

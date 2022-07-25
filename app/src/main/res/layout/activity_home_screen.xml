@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity_home_screen">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageAquariumHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/myImageViewText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/imageAquariumHome"
+            android:layout_alignTop="@id/imageAquariumHome"
+            android:layout_alignRight="@id/imageAquariumHome"
+            android:layout_alignBottom="@id/imageAquariumHome"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            android:fontFamily="@font/mina"
+            android:gravity="center"
+            android:shadowColor="#ffffff"
+            android:shadowDx="10"
+            android:shadowDy="3"
+            android:shadowRadius="2"
+            android:text="Hello"
+            android:textColor="#000000"
+            android:textSize="50dp"
+
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+</LinearLayout>

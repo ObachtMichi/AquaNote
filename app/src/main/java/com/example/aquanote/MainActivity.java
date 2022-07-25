@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonSelectValue;
     private ImageButton addPhotoButton;
     private TextView immNameTextField;
+    public static String name;
+    private static Uri selectedImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!nameAquaInput.getText().toString().equals("")){
+                    name = nameAquaInput.getText().toString();
                     nextActivity();
                 } else {
                     Animation shake = AnimationUtils.loadAnimation(MainActivity.this, R.anim.shake);
@@ -63,12 +66,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK && data != null){
-            Uri selectedImage = data.getData();
+            selectedImage = data.getData();
             addPhotoButton.setImageURI(selectedImage);
         }
     }
 
-    public void nextActivity(){
+    public static Uri getPicture(){
+        return selectedImage;
+    }
+
+    public static String getName(){
+        return name;
+    }
+
+    private void nextActivity(){
         Intent i = new Intent(this, SelectValuesStart.class);
         startActivity(i);
     }
