@@ -53,16 +53,15 @@ public class SelectValuesStart extends AppCompatActivity {
         customSix = (CheckBox) findViewById(R.id.customSix);
         customSeven = (CheckBox) findViewById(R.id.customSeven);
         customEight = (CheckBox) findViewById(R.id.customEight);
-        textCountLeft = (TextView) findViewById(R.id.textCountLeft);
 
-        checkAlkalinity = (CheckBox) findViewById(R.id.checkAlkalinity);
+        textCountLeft = (TextView) findViewById(R.id.textCountLeft);
         checkCalcium = (CheckBox) findViewById(R.id.checkCalcium);
         checkMagnesium = (CheckBox) findViewById(R.id.checkMagnesium);
         checkNitrate = (CheckBox) findViewById(R.id.checkNitrate);
         checkPhosphate = (CheckBox) findViewById(R.id.checkPhostphate);
 
         arr = new CheckBox[12];
-        arr[0] = checkAlkalinity;
+        arr[0] = (CheckBox) findViewById(R.id.checkAlkalinity);
         arr[1] = checkCalcium;
         arr[2] = checkMagnesium;
         arr[3] = checkNitrate;

@@ -30,6 +30,8 @@ public class activity_home_screen extends AppCompatActivity {
     private LinearLayout layout10;
     private LinearLayout layout11;
 
+    private LinearLayout[] arrLayout = new LinearLayout[11];
+
     private TextView value1;
     private TextView value2;
     private TextView value3;
@@ -41,6 +43,8 @@ public class activity_home_screen extends AppCompatActivity {
     private TextView value9;
     private TextView value10;
     private TextView value11;
+
+    private TextView[] arrText = new TextView[11];
 
 
 
@@ -55,43 +59,46 @@ public class activity_home_screen extends AppCompatActivity {
         imageAquariumHome.setImageURI(MainActivity.getPicture());
         myImageViewText.setText(MainActivity.getName());
         checkBox = SelectValuesStart.getCheckBox();
+        fillList();
     }
 
     private void fillList (){
-
+        int t = 0;
         for (int i = 0; i < checkBox.length; i++) {
-
             if (checkBox[i].isChecked()){
-                value1.setText(checkBox[i].getText());
-                layout1.setVisibility(View.VISIBLE);
+                arrText[t].setText(checkBox[i].getText());
+                arrLayout[t].setVisibility(View.VISIBLE);
+                t++;
             }
         }
     }
 
     private void initVar(){
-        layout1 = (LinearLayout)findViewById(R.id.layout1);
-        layout2 = (LinearLayout)findViewById(R.id.layout2);
-        layout3 = (LinearLayout)findViewById(R.id.layout3);
-        layout4 = (LinearLayout)findViewById(R.id.layout4);
-        layout5 = (LinearLayout)findViewById(R.id.layout5);
-        layout6 = (LinearLayout)findViewById(R.id.layout6);
-        layout7 = (LinearLayout)findViewById(R.id.layout7);
-        layout8 = (LinearLayout)findViewById(R.id.layout8);
-        layout9 = (LinearLayout)findViewById(R.id.layout9);
-        layout10 = (LinearLayout)findViewById(R.id.layout10);
-        layout11 = (LinearLayout)findViewById(R.id.layout11);
+        arrLayout[0]=(LinearLayout)findViewById(R.id.layout1);
+        arrLayout[1]=(LinearLayout)findViewById(R.id.layout2);
+        arrLayout[2]=(LinearLayout)findViewById(R.id.layout3);
+        arrLayout[3]=(LinearLayout)findViewById(R.id.layout4);
+        arrLayout[4]=(LinearLayout)findViewById(R.id.layout5);
+        arrLayout[5]=(LinearLayout)findViewById(R.id.layout6);
+        arrLayout[6]=(LinearLayout)findViewById(R.id.layout7);
+        arrLayout[7]=(LinearLayout)findViewById(R.id.layout8);
+        arrLayout[8]=(LinearLayout)findViewById(R.id.layout9);
+        arrLayout[9]=(LinearLayout)findViewById(R.id.layout10);
+        arrLayout[10]=(LinearLayout)findViewById(R.id.layout11);
 
-        value1 = (TextView) findViewById(R.id.value1);
-        value2 = (TextView) findViewById(R.id.value2);
-        value3 = (TextView) findViewById(R.id.value3);
-        value4 = (TextView) findViewById(R.id.value4);
-        value5 = (TextView) findViewById(R.id.value5);
-        value6 = (TextView) findViewById(R.id.value6);
-        value7 = (TextView) findViewById(R.id.value7);
-        value8 = (TextView) findViewById(R.id.value8);
-        value9 = (TextView) findViewById(R.id.value9);
-        value10 = (TextView) findViewById(R.id.value10);
-        value11 = (TextView) findViewById(R.id.value11);
+        arrText[0]=(TextView) findViewById(R.id.value1);
+        arrText[1]=(TextView) findViewById(R.id.value2);
+        arrText[2]=(TextView) findViewById(R.id.value3);
+        arrText[3]=(TextView) findViewById(R.id.value4);
+        arrText[4]=(TextView) findViewById(R.id.value5);
+        arrText[5]=(TextView) findViewById(R.id.value6);
+        arrText[6]=(TextView) findViewById(R.id.value7);
+        arrText[7]=(TextView) findViewById(R.id.value8);
+        arrText[8]=(TextView) findViewById(R.id.value9);
+        arrText[9]=(TextView) findViewById(R.id.value10);
+        arrText[10]=(TextView) findViewById(R.id.value11);
+
+
 
     }
 }
