@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
                     Animation shake = AnimationUtils.loadAnimation(MainActivity.this, R.anim.shake);
                     nameAquaInput.startAnimation(shake);
                     immNameTextField.startAnimation(shake);
-
                 }
             }
         });
@@ -59,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 3);
             }
         });
-
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -1,9 +1,11 @@
 package com.example.aquanote;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.CheckBox;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -18,8 +20,8 @@ public class SQLiteManager extends SQLiteOpenHelper {
     private static final String COUNTER = "Counter";
 
     private static final String ID_FIELD = "id";
-    private static final String TITLE_FIELD = "title";
-    private static final String DESC_FIELD = "desc";
+    private static final String TYP_FIELD = "typ";
+    private static final String VALUE_FIELD = "value";
     private static final String DELETED_FIELD = "deleted";
 
     @SuppressLint("SimpleDataFormat")
@@ -42,15 +44,13 @@ public class SQLiteManager extends SQLiteOpenHelper {
         StringBuilder sql;
         sql = new StringBuilder()
                 .append("CREATE TABLE")
-                .append(TABLE_NAME)
+                .append(MainActivity.getName())
                 .append("(")
                 .append(COUNTER)
                 .append(" INTEGER PRIMARY KEY AUTOINCREMENT")
                 .append(ID_FIELD)
                 .append(" INT, ")
-                .append(TITLE_FIELD)
                 .append(" TEXT, ")
-                .append(DESC_FIELD)
                 .append(" TEXT, ")
                 .append(DELETED_FIELD)
                 .append(" TEXT, ");
@@ -65,5 +65,19 @@ public class SQLiteManager extends SQLiteOpenHelper {
 
 
 
+    public void addTypToDatabase(CheckBox[] arr){
+
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        for (int i = 0; i < arr.length; i++) {
+
+            contentValues.put(ID_FIELD, i);
+            contentValues.put(TYP_FIELD, arr[i].getText().toString());
+        }
+
+        sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
+    }
 
 }

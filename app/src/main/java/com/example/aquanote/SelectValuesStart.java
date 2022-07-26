@@ -127,7 +127,7 @@ public class SelectValuesStart extends AppCompatActivity {
     }
 
 
-    public void addCustomValueButtonAction() { //TODO Auflistung von oben nach unten weiterer CustomValues
+    public void addCustomValueButtonAction() {
 
         addCustomValue.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -45,7 +45,8 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:id="@+id/layout1"
-                android:visibility="gone"
+                android:layout_marginRight="10dp"
+                android:visibility="visible"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
@@ -62,21 +63,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    android:id="@+id/editText1"
                     android:inputType="numberDecimal"
                     android:layout_weight="1"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginRight="10dp"
-                    android:text="Add"/>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:id="@+id/layout2"
+                android:layout_marginRight="10dp"
                 android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -94,21 +91,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    android:id="@+id/editText2"
                     android:inputType="numberDecimal"
                     android:layout_weight="1"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginRight="10dp"
-                    android:text="Add"/>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:id="@+id/layout3"
+                android:layout_marginRight="10dp"
                 android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -126,15 +119,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    android:id="@+id/editText3"
                     android:inputType="numberDecimal"
                     android:layout_weight="1"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginRight="10dp"
-                    android:text="Add"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -142,6 +130,7 @@
                 android:layout_marginTop="5dp"
                 android:id="@+id/layout4"
                 android:visibility="gone"
+                android:layout_marginRight="10dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
@@ -158,21 +147,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    android:id="@+id/editText4"
                     android:inputType="numberDecimal"
                     android:layout_weight="1"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginRight="10dp"
-                    android:text="Add"/>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:visibility="gone"
                 android:id="@+id/layout5"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -190,21 +175,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    android:id="@+id/editText5"
                     android:inputType="numberDecimal"
                     android:layout_weight="1"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginRight="10dp"
-                    android:text="Add"/>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:id="@+id/layout6"
+                android:layout_marginRight="10dp"
                 android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -222,15 +203,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    android:id="@+id/editText6"
                     android:inputType="numberDecimal"
                     android:layout_weight="1"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginRight="10dp"
-                    android:text="Add"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -238,6 +214,7 @@
                 android:layout_marginTop="5dp"
                 android:id="@+id/layout7"
                 android:visibility="gone"
+                android:layout_marginRight="10dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
@@ -254,21 +231,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    android:id="@+id/editText7"
                     android:inputType="numberDecimal"
                     android:layout_weight="1"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginRight="10dp"
-                    android:text="Add"/>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:id="@+id/layout8"
+                android:layout_marginRight="10dp"
                 android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -286,21 +259,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    android:id="@+id/editText8"
                     android:inputType="numberDecimal"
                     android:layout_weight="1"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginRight="10dp"
-                    android:text="Add"/>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:id="@+id/layout9"
+                android:layout_marginRight="10dp"
                 android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -318,20 +287,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    android:id="@+id/editText9"
                     android:inputType="numberDecimal"
                     android:layout_weight="1"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginRight="10dp"
-                    android:text="Add"/>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
                 android:id="@+id/layout10"
                 android:visibility="gone"
                 android:layout_height="wrap_content"
@@ -350,20 +315,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    android:id="@+id/editText10"
                     android:inputType="numberDecimal"
                     android:layout_weight="1"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginRight="10dp"
-                    android:text="Add"/>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:id="@+id/layout11"
+                android:layout_marginRight="10dp"
                 android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -381,22 +342,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    android:id="@+id/editText11"
                     android:inputType="numberDecimal"
                     android:layout_weight="1"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.1"
-                    android:layout_marginRight="10dp"
-                    android:text="Add"/>
             </LinearLayout>
-
         </LinearLayout>
-
-
     </ScrollView>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:id="@+id/addValueButton"
+        android:fontFamily="@font/montserrat">
+    </Button>
+
+</LinearLayout>
 
 
 
