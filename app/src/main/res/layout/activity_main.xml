@@ -10,6 +10,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_weight="0"
         android:fontFamily="@font/montserrat"
         android:text="Add photo:" />
@@ -19,6 +21,8 @@
         android:id="@+id/addPhotoButton"
         android:layout_width="match_parent"
         android:layout_height="213dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_weight="1.5"
         android:src="@android:drawable/ic_menu_gallery"
         tools:ignore="SpeakableTextPresentCheck" />

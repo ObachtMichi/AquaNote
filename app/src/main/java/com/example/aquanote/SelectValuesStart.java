@@ -37,7 +37,7 @@ public class SelectValuesStart extends AppCompatActivity {
     private EditText customName;
     private int i = 5;
     private int counter = 5;
-    private CheckBox[] arr;
+    private static CheckBox[] arr;
 
 
     @Override
@@ -123,7 +123,7 @@ public class SelectValuesStart extends AppCompatActivity {
         });
     }
 
-    public CheckBox[] getCheckBox() {
+    public static CheckBox[] getCheckBox() {
         return arr;
     }
 
