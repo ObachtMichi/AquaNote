@@ -18,6 +18,7 @@ public class activity_home_screen extends AppCompatActivity {
     private TextView myImageViewText;
     private CheckBox[] checkBox;
 
+
     private LinearLayout layout1;
     private LinearLayout layout2;
     private LinearLayout layout3;
