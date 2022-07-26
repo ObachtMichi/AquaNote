@@ -1,16 +1,28 @@
 package com.example.aquanote;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.Image;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
+
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class activity_home_screen extends AppCompatActivity {
 
 
@@ -18,7 +30,7 @@ public class activity_home_screen extends AppCompatActivity {
     private TextView myImageViewText;
     private CheckBox[] checkBox;
 
-
+    private Button addValueButton;
     private LinearLayout layout1;
     private LinearLayout layout2;
     private LinearLayout layout3;
@@ -30,6 +42,22 @@ public class activity_home_screen extends AppCompatActivity {
     private LinearLayout layout9;
     private LinearLayout layout10;
     private LinearLayout layout11;
+
+    private EditText editText1;
+    private EditText editText2;
+    private EditText editText3;
+    private EditText editText4;
+    private EditText editText5;
+    private EditText editText6;
+    private EditText editText7;
+    private EditText editText8;
+    private EditText editText9;
+    private EditText editText10;
+    private EditText editText11;
+
+    private EditText[] arrEditText = new EditText[11];
+
+    private static ArrayList <String> arrComplete = new ArrayList<String>();
 
     private LinearLayout[] arrLayout = new LinearLayout[11];
 
@@ -45,6 +73,10 @@ public class activity_home_screen extends AppCompatActivity {
     private TextView value10;
     private TextView value11;
 
+    DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+
+
     private TextView[] arrText = new TextView[11];
 
 
@@ -57,11 +89,16 @@ public class activity_home_screen extends AppCompatActivity {
         imageAquariumHome = (ImageView) findViewById(R.id.imageAquariumHome);
         myImageViewText = (TextView) findViewById(R.id.myImageViewText);
         initVar();
+        addValueButton = (Button) findViewById(R.id.addValueButton);
         imageAquariumHome.setImageURI(MainActivity.getPicture());
         myImageViewText.setText(MainActivity.getName());
         checkBox = SelectValuesStart.getCheckBox();
         fillList();
+        addValueToTyp();
+
+
     }
+
 
     private void fillList (){
         int t = 0;
@@ -99,7 +136,44 @@ public class activity_home_screen extends AppCompatActivity {
         arrText[9]=(TextView) findViewById(R.id.value10);
         arrText[10]=(TextView) findViewById(R.id.value11);
 
+        arrEditText[0] = (EditText) findViewById(R.id.editText1);
+        arrEditText[1] = (EditText) findViewById(R.id.editText2);
+        arrEditText[2] = (EditText) findViewById(R.id.editText3);
+        arrEditText[3] = (EditText) findViewById(R.id.editText4);
+        arrEditText[4] = (EditText) findViewById(R.id.editText5);
+        arrEditText[5] = (EditText) findViewById(R.id.editText6);
+        arrEditText[6] = (EditText) findViewById(R.id.editText7);
+        arrEditText[7] = (EditText) findViewById(R.id.editText8);
+        arrEditText[8] = (EditText) findViewById(R.id.editText9);
+        arrEditText[9] = (EditText) findViewById(R.id.editText10);
+        arrEditText[10] = (EditText) findViewById(R.id.editText11);
+
+
 
 
     }
+
+    private void addValueToTyp(){
+        addValueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LocalDate localDate = LocalDate.now();
+                for (int i = 0; i < arrText.length; i++) {
+                    if(SelectValuesStart.getCheckBox()[i].isChecked()) {
+                        if (!arrEditText[i].equals("")) {
+                            arrComplete.add(arrText[i].getText().toString() + "," + arrEditText[i].getText().toString() + "," + localDate);
+                        }
+                    }
+                }
+                System.out.println(arrComplete.toString());
+            }
+        });
+    }
+
+
+    public static ArrayList<String> getListComplete (){
+        return arrComplete;
+    }
 }
+
+
