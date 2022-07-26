@@ -23,6 +23,5 @@ public class activity_home_screen extends AppCompatActivity {
 
         imageAquariumHome.setImageURI(MainActivity.getPicture());
         myImageViewText.setText(MainActivity.getName());
-
     }
 }

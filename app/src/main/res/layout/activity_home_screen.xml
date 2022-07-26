@@ -8,40 +8,70 @@
     tools:context=".activity_home_screen">
 
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/myImageViewText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_weight="0.05"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="NameError"
+        android:textSize="50sp"
 
-        <ImageView
-            android:id="@+id/imageAquariumHome"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/imageAquariumHome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:clickable="false"
+        app:srcCompat="@android:drawable/button_onoff_indicator_off"
+        tools:ignore="SpeakableTextPresentCheck"
+       />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/myImageViewText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/imageAquariumHome"
-            android:layout_alignTop="@id/imageAquariumHome"
-            android:layout_alignRight="@id/imageAquariumHome"
-            android:layout_alignBottom="@id/imageAquariumHome"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp"
-            android:fontFamily="@font/mina"
-            android:gravity="center"
-            android:shadowColor="#ffffff"
-            android:shadowDx="10"
-            android:shadowDy="3"
-            android:shadowRadius="2"
-            android:text="Hello"
-            android:textColor="#000000"
-            android:textSize="50dp"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:text="TEST1"
+                android:textSize="25dp" />
 
-            android:textStyle="bold" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
 
-    </RelativeLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="0.1"
+                android:layout_marginRight="10dp"
+                android:text="Add">
+            </Button>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
 </LinearLayout>

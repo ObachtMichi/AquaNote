@@ -16,6 +16,7 @@
         <activity
             android:name=".activity_home_screen"
             android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:label=""/>
 
         <meta-data
@@ -25,10 +26,12 @@
         <activity
             android:name=".SelectValuesStart"
             android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:label="" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:label="AquaNote">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
