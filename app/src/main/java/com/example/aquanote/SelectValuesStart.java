@@ -1,11 +1,13 @@
 package com.example.aquanote;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -35,15 +37,19 @@ public class SelectValuesStart extends AppCompatActivity {
     private CheckBox checkPhosphate;
     private TextView textCountLeft;
     private EditText customName;
+    private Button buttonSelectAll;
     private int i = 5;
     private int counter = 5;
     private static CheckBox[] arr;
+    private int w = 0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_values_start);
+        buttonSelectAll = (Button) findViewById(R.id.buttonSelectAll);
+
         addCustomValue = (Button) findViewById(R.id.addCustomValue);
         buttonNextHome = (Button) findViewById(R.id.buttonNextHome);
         customTwo = (CheckBox) findViewById(R.id.customTwo);
@@ -73,6 +79,25 @@ public class SelectValuesStart extends AppCompatActivity {
         arr[9] = customSix;
         arr[10] = customSeven;
         arr[11] = customEight;
+
+
+        buttonSelectAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(w == 0) {
+                    for (CheckBox c : arr) {
+                        c.setChecked(true);
+                    }
+                    w=1;
+                } else{
+                    for (CheckBox c : arr) {
+                        c.setChecked(false);
+                    }
+                    w=0;
+                }
+            }
+        });
 
 
         buttonNextHome.setOnClickListener(new View.OnClickListener() {
@@ -127,38 +152,7 @@ public class SelectValuesStart extends AppCompatActivity {
     }
 
 
-    public void addCustomValueButtonAction() {
-
-        addCustomValue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                customOne.setAlpha(1);
-                customOne.setClickable(true);
-            }
-        });
-        ;
-
-        addCustomValue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                customTwo.setAlpha(1);
-                customTwo.setClickable(true);
-            }
-        });
-        ;
-
-        addCustomValue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                customThree.setAlpha(1);
-                customThree.setClickable(true);
-            }
-        });
-        ;
-
-    }
-
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void nextActivity() {
         Intent i = new Intent(this, activity_home_screen.class);
         startActivity(i);

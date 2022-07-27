@@ -23,11 +23,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -36,11 +35,14 @@
             android:text="Add custom Value"
             android:id="@+id/addCustomValue">
         </Button>
-        <TextView
+
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-        </TextView>
+            android:fontFamily="@font/montserrat"
+            android:id="@+id/buttonSelectAll"
+            android:text="Select all"/>
         <Button
             android:layout_width="wrap_content"
             android:id="@+id/buttonNextHome"
@@ -49,10 +51,8 @@
             android:layout_weight="1"
             android:text="Accept">
         </Button>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"/>
+
+
 
     </LinearLayout>
 
