@@ -1,11 +1,17 @@
 package com.example.aquanote;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -13,6 +19,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.lang.reflect.Array;
 import java.time.LocalDate;
@@ -26,9 +34,12 @@ import java.util.List;
 public class activity_home_screen extends AppCompatActivity {
 
 
+
     private ImageView imageAquariumHome;
     private TextView myImageViewText;
     private CheckBox[] checkBox;
+
+    private BottomNavigationView bottomNavigationView;
 
     private Button addValueButton;
     private LinearLayout layout1;
@@ -86,6 +97,8 @@ public class activity_home_screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+
+
         imageAquariumHome = (ImageView) findViewById(R.id.imageAquariumHome);
         myImageViewText = (TextView) findViewById(R.id.myImageViewText);
         initVar();
@@ -96,8 +109,34 @@ public class activity_home_screen extends AppCompatActivity {
         fillList();
         addValueToTyp();
 
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.homeScreen);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.settings:
+                        Intent intentSettings = new Intent(activity_home_screen.this, activity_Settings.class);
+                        startActivity(intentSettings);
+
+                        break;
+                    case R.id.graph:
+                        Intent intentGraph = new Intent(activity_home_screen.this, activity_graph.class);
+                        startActivity(intentGraph);
+                        break;
+                    case R.id.homeScreen:
+                        break;
+                }
+                return true;
+            }
+        });
+
+
 
     }
+
 
 
     private void fillList (){
