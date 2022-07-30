@@ -86,13 +86,16 @@ public class SelectValuesStart extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(w == 0) {
-                    for (CheckBox c : arr) {
-                        c.setChecked(true);
+
+                    for (int j = 0; j < arr.length-1; j++) {
+                        if(!arr[j].getText().equals("X"))
+                            arr[j].setChecked(true);
                     }
-                    w=1;
-                } else{
-                    for (CheckBox c : arr) {
-                        c.setChecked(false);
+                    w = 1;
+                }
+                 else{
+                    for (int k = 0; k < arr.length-1; k++) {
+                        arr[k].setChecked(false);
                     }
                     w=0;
                 }
@@ -101,6 +104,7 @@ public class SelectValuesStart extends AppCompatActivity {
 
 
         buttonNextHome.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 nextActivity();

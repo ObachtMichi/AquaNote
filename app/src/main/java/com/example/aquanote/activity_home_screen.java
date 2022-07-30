@@ -118,13 +118,11 @@ public class activity_home_screen extends AppCompatActivity {
 
                 switch (item.getItemId()){
                     case R.id.settings:
-                        Intent intentSettings = new Intent(activity_home_screen.this, activity_Settings.class);
-                        startActivity(intentSettings);
+                        nextSettings();
 
                         break;
                     case R.id.graph:
-                        Intent intentGraph = new Intent(activity_home_screen.this, activity_graph.class);
-                        startActivity(intentGraph);
+                        nextGraph();
                         break;
                     case R.id.homeScreen:
                         break;
@@ -208,6 +206,19 @@ public class activity_home_screen extends AppCompatActivity {
             }
         });
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void nextSettings() {
+        Intent i = new Intent(this, activity_Settings.class);
+        startActivity(i);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void nextGraph() {
+        Intent i = new Intent(this, activity_graph.class);
+        startActivity(i);
+    }
+
 
 
     public static ArrayList<String> getListComplete (){
