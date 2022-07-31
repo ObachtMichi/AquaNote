@@ -197,8 +197,8 @@ public class activity_home_screen extends AppCompatActivity {
                 LocalDate localDate = LocalDate.now();
                 for (int i = 0; i < arrText.length; i++) {
                     if(SelectValuesStart.getCheckBox()[i].isChecked()) {
-                        if (!arrEditText[i].equals("")) {
-                            arrComplete.add(arrText[i].getText().toString() + "," + arrEditText[i].getText().toString() + "," + localDate);
+                        if (!arrEditText[i].getText().toString().equals("")) {
+                            arrComplete.add(SelectValuesStart.getCheckBox()[i].getText().toString() + "," + arrEditText[i].getText().toString() + "," + localDate);
                         }
                     }
                 }
