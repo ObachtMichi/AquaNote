@@ -107,7 +107,12 @@ public class SelectValuesStart extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                nextActivity();
+                if(checkIfOneIsChecked()) {
+                    nextActivity();
+                } else{
+                    System.out.println("Nichts selected!");
+                }
+
             }
         });
 
@@ -162,4 +167,15 @@ public class SelectValuesStart extends AppCompatActivity {
         startActivity(i);
     }
 
+
+    private boolean checkIfOneIsChecked(){
+
+        for (int j = 0; j < arr.length; j++) {
+
+            if(arr[j].isChecked()){
+                return true;
+            }
+        }
+        return false;
+    }
 }
