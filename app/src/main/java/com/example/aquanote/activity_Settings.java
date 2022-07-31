@@ -42,4 +42,10 @@ public class activity_Settings extends AppCompatActivity {
             }
         });
     }
+
+
+    @Override
+    public void onBackPressed() {
+        // Your not allowed to go back
+    }
 }

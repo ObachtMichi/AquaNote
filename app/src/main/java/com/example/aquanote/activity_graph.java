@@ -43,4 +43,10 @@ public class activity_graph extends AppCompatActivity {
             }
         });
     }
+
+
+    @Override
+    public void onBackPressed() {
+        // Your not allowed to go back
+    }
 }

@@ -3,14 +3,12 @@ package com.example.aquanote;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -19,19 +17,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class activity_home_screen extends AppCompatActivity {
+public class activity_home_screen extends AppCompatActivity implements TextWatcher {
 
 
 
@@ -40,6 +36,8 @@ public class activity_home_screen extends AppCompatActivity {
     private CheckBox[] checkBox;
 
     private BottomNavigationView bottomNavigationView;
+
+    private String[] val = {"","","","","","","","","","",""};
 
     private Button addValueButton;
     private LinearLayout layout1;
@@ -86,6 +84,10 @@ public class activity_home_screen extends AppCompatActivity {
 
     DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
+    private TextView textAddedSuc;
+
+
+
 
 
     private TextView[] arrText = new TextView[11];
@@ -108,6 +110,8 @@ public class activity_home_screen extends AppCompatActivity {
         checkBox = SelectValuesStart.getCheckBox();
         fillList();
         addValueToTyp();
+
+        textAddedSuc = (TextView) findViewById(R.id.textAddedSuc);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.homeScreen);
@@ -143,6 +147,7 @@ public class activity_home_screen extends AppCompatActivity {
             if (checkBox[i].isChecked()){
                 arrText[t].setText(checkBox[i].getText());
                 arrLayout[t].setVisibility(View.VISIBLE);
+                arrEditText[t].addTextChangedListener(this);
                 t++;
             }
         }
@@ -196,15 +201,20 @@ public class activity_home_screen extends AppCompatActivity {
             public void onClick(View view) {
                 LocalDate localDate = LocalDate.now();
                 for (int i = 0; i < arrText.length; i++) {
-                    if(SelectValuesStart.getCheckBox()[i].isChecked()) {
-                        if (!arrEditText[i].getText().toString().equals("")) {
-                            arrComplete.add(SelectValuesStart.getCheckBox()[i].getText().toString() + "," + arrEditText[i].getText().toString() + "," + localDate);
+                        if (!val[i].toString().equals("")) {
+                            arrComplete.add(arrText[i].getText().toString() + "," + val[i] + "," + localDate);
+                            textAddedSuc.setVisibility(View.VISIBLE);
                         }
-                    }
+                    //}
                 }
                 System.out.println(arrComplete.toString());
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Your not allowed to go back
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -223,6 +233,33 @@ public class activity_home_screen extends AppCompatActivity {
 
     public static ArrayList<String> getListComplete (){
         return arrComplete;
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        //Toast.makeText(this,"before", Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        //Toast.makeText(this,"on", Toast.LENGTH_LONG).show();
+
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+        //Toast.makeText(this,editable.toString(), Toast.LENGTH_LONG).show();
+
+        for (int i = 0; i < arrEditText.length; i++) {
+            if (arrEditText[i].getText().hashCode() == editable.hashCode()) {
+                val[i] = editable.toString();
+            }
+        }
+
+
+
     }
 }
 
