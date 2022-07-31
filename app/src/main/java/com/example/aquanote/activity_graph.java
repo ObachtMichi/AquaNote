@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -19,6 +21,7 @@ public class activity_graph extends AppCompatActivity {
         setContentView(R.layout.activity_graph);
 
 
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setSelectedItemId(R.id.graph);
@@ -26,6 +29,7 @@ public class activity_graph extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
 
                 switch (item.getItemId()){
                     case R.id.settings:
@@ -48,5 +52,10 @@ public class activity_graph extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         // Your not allowed to go back
+    }
+
+
+    private void fillDropDown(){
+
     }
 }
