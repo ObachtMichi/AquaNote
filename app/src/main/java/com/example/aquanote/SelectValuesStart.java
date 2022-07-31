@@ -11,6 +11,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -37,6 +39,7 @@ public class SelectValuesStart extends AppCompatActivity {
     private CheckBox checkPhosphate;
     private TextView textCountLeft;
     private EditText customName;
+    private TextView textSelOne;
     private Button buttonSelectAll;
     private int i = 5;
     private int counter = 5;
@@ -49,6 +52,7 @@ public class SelectValuesStart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_values_start);
         buttonSelectAll = (Button) findViewById(R.id.buttonSelectAll);
+        textSelOne = (TextView) findViewById(R.id.textSelOne);
 
         addCustomValue = (Button) findViewById(R.id.addCustomValue);
         buttonNextHome = (Button) findViewById(R.id.buttonNextHome);
@@ -110,7 +114,9 @@ public class SelectValuesStart extends AppCompatActivity {
                 if(checkIfOneIsChecked()) {
                     nextActivity();
                 } else{
-                    System.out.println("Nichts selected!");
+                    textSelOne.setVisibility(View.VISIBLE);
+                    Animation shake = AnimationUtils.loadAnimation(SelectValuesStart.this, R.anim.shake);
+                    textSelOne.startAnimation(shake);
                 }
 
             }
