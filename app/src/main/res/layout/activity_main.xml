@@ -105,7 +105,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/montserrat"
             android:gravity="center_vertical"
-            android:text="Erforderlich *"
+            android:text="Required *"
             android:textSize="10dp" />
 
         <Button
