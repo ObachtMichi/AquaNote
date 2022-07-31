@@ -202,8 +202,18 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                 LocalDate localDate = LocalDate.now();
                 for (int i = 0; i < arrText.length; i++) {
                         if (!val[i].toString().equals("")) {
-                            arrComplete.add(arrText[i].getText().toString() + "," + val[i] + "," + localDate);
-                            textAddedSuc.setVisibility(View.VISIBLE);
+
+                            try {
+                                float tmp = Float.parseFloat(val[i]);
+                                arrComplete.add(arrText[i].getText().toString() + "," + val[i] + "," + localDate);
+                                textAddedSuc.setText("Added Succesfully");
+                                textAddedSuc.setVisibility(View.VISIBLE);
+                            } catch (Exception e){
+                                textAddedSuc.setVisibility(View.VISIBLE);
+                                textAddedSuc.setText("Not valid");
+                                System.out.println("NOT VALID");
+                            }
+
                         }
                     //}
                 }

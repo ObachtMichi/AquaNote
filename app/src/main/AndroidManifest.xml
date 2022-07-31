@@ -17,16 +17,19 @@
             android:name=".activity_Settings"
             android:exported="false"
             android:label=""
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".activity_graph"
             android:exported="false"
             android:label=""
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".activity_home_screen"
             android:exported="false"
             android:label=""
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
 
         <meta-data
@@ -37,11 +40,13 @@
             android:name=".SelectValuesStart"
             android:exported="false"
             android:label=""
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="AquaNote"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
