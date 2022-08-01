@@ -17,6 +17,10 @@ public class Value {
     public Value(){
         this.date = sdf.format(new Date());
     }
+
+    public Value(String name){
+        this.valueType = name;
+    }
     public Value(int id, String valueType, float valueNumber) {
         this.id = id;
         this.valueType = valueType;

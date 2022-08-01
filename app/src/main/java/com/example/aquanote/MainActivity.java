@@ -18,6 +18,8 @@ import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText nameAquaInput;
@@ -28,11 +30,15 @@ public class MainActivity extends AppCompatActivity {
     public static String name;
     private static Uri selectedImage;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //SKIP EVTL
+
+        if (checkDBExist()) skipIfDBExists();
 
         nameAquaInput = (EditText) findViewById(R.id.nameAquaInput);
         volumeAquaInput = (EditText) findViewById(R.id.volumeAquaInput);
@@ -91,4 +97,11 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, activity_home_screen.class);
         startActivity(i);
     }
+
+    private boolean checkDBExist(){
+        File f = new File("/data/data/com.example.aquanote/databases");
+        if (f.exists()) return true;
+        return false;
+    }
+
 }

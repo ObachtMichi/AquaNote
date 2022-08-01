@@ -141,6 +141,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
 
 
     private void fillList() {
+        /*
         int t = 0;
         for (int i = 0; i < checkBox.length; i++) {
             if (checkBox[i].isChecked()) {
@@ -148,7 +149,14 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                 arrLayout[t].setVisibility(View.VISIBLE);
                 arrEditText[t].addTextChangedListener(this);
                 t++;
+                arrText
+
             }
+        }
+
+         */
+        for (int i = 0; i < dataBaseHelper.getValueTypes().size(); i++) {
+            arrText[i].setText(dataBaseHelper.getValueTypes().get(i));
         }
     }
 
@@ -277,6 +285,8 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
             }
         }
     }
+
+
 
 }
 
