@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -30,14 +32,15 @@ import java.util.ArrayList;
 public class activity_home_screen extends AppCompatActivity implements TextWatcher {
 
 
-
     private ImageView imageAquariumHome;
     private TextView myImageViewText;
     private CheckBox[] checkBox;
 
+    DataBaseHelper dataBaseHelper;
+
     private BottomNavigationView bottomNavigationView;
 
-    private String[] val = {"","","","","","","","","","",""};
+    private String[] val = {"", "", "", "", "", "", "", "", "", "", ""};
 
     private Button addValueButton;
     private LinearLayout layout1;
@@ -66,7 +69,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
 
     private EditText[] arrEditText = new EditText[11];
 
-    private static ArrayList <String> arrComplete = new ArrayList<String>();
+    private static ArrayList<String> arrComplete = new ArrayList<String>();
 
     private LinearLayout[] arrLayout = new LinearLayout[11];
 
@@ -87,11 +90,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
     private TextView textAddedSuc;
 
 
-
-
-
     private TextView[] arrText = new TextView[11];
-
 
 
     @Override
@@ -99,6 +98,8 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        //DATABASE
+        dataBaseHelper = new DataBaseHelper(activity_home_screen.this);
 
 
         imageAquariumHome = (ImageView) findViewById(R.id.imageAquariumHome);
@@ -106,7 +107,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         initVar();
         addValueButton = (Button) findViewById(R.id.addValueButton);
         imageAquariumHome.setImageURI(MainActivity.getPicture());
-        myImageViewText.setText(MainActivity.getName());
+        myImageViewText.setText("Test");
         checkBox = SelectValuesStart.getCheckBox();
         fillList();
         addValueToTyp();
@@ -120,7 +121,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.settings:
                         nextSettings();
 
@@ -136,15 +137,13 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         });
 
 
-
     }
 
 
-
-    private void fillList (){
+    private void fillList() {
         int t = 0;
         for (int i = 0; i < checkBox.length; i++) {
-            if (checkBox[i].isChecked()){
+            if (checkBox[i].isChecked()) {
                 arrText[t].setText(checkBox[i].getText());
                 arrLayout[t].setVisibility(View.VISIBLE);
                 arrEditText[t].addTextChangedListener(this);
@@ -153,30 +152,30 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         }
     }
 
-    private void initVar(){
-        arrLayout[0]=(LinearLayout)findViewById(R.id.layout1);
-        arrLayout[1]=(LinearLayout)findViewById(R.id.layout2);
-        arrLayout[2]=(LinearLayout)findViewById(R.id.layout3);
-        arrLayout[3]=(LinearLayout)findViewById(R.id.layout4);
-        arrLayout[4]=(LinearLayout)findViewById(R.id.layout5);
-        arrLayout[5]=(LinearLayout)findViewById(R.id.layout6);
-        arrLayout[6]=(LinearLayout)findViewById(R.id.layout7);
-        arrLayout[7]=(LinearLayout)findViewById(R.id.layout8);
-        arrLayout[8]=(LinearLayout)findViewById(R.id.layout9);
-        arrLayout[9]=(LinearLayout)findViewById(R.id.layout10);
-        arrLayout[10]=(LinearLayout)findViewById(R.id.layout11);
+    private void initVar() {
+        arrLayout[0] = (LinearLayout) findViewById(R.id.layout1);
+        arrLayout[1] = (LinearLayout) findViewById(R.id.layout2);
+        arrLayout[2] = (LinearLayout) findViewById(R.id.layout3);
+        arrLayout[3] = (LinearLayout) findViewById(R.id.layout4);
+        arrLayout[4] = (LinearLayout) findViewById(R.id.layout5);
+        arrLayout[5] = (LinearLayout) findViewById(R.id.layout6);
+        arrLayout[6] = (LinearLayout) findViewById(R.id.layout7);
+        arrLayout[7] = (LinearLayout) findViewById(R.id.layout8);
+        arrLayout[8] = (LinearLayout) findViewById(R.id.layout9);
+        arrLayout[9] = (LinearLayout) findViewById(R.id.layout10);
+        arrLayout[10] = (LinearLayout) findViewById(R.id.layout11);
 
-        arrText[0]=(TextView) findViewById(R.id.value1);
-        arrText[1]=(TextView) findViewById(R.id.value2);
-        arrText[2]=(TextView) findViewById(R.id.value3);
-        arrText[3]=(TextView) findViewById(R.id.value4);
-        arrText[4]=(TextView) findViewById(R.id.value5);
-        arrText[5]=(TextView) findViewById(R.id.value6);
-        arrText[6]=(TextView) findViewById(R.id.value7);
-        arrText[7]=(TextView) findViewById(R.id.value8);
-        arrText[8]=(TextView) findViewById(R.id.value9);
-        arrText[9]=(TextView) findViewById(R.id.value10);
-        arrText[10]=(TextView) findViewById(R.id.value11);
+        arrText[0] = (TextView) findViewById(R.id.value1);
+        arrText[1] = (TextView) findViewById(R.id.value2);
+        arrText[2] = (TextView) findViewById(R.id.value3);
+        arrText[3] = (TextView) findViewById(R.id.value4);
+        arrText[4] = (TextView) findViewById(R.id.value5);
+        arrText[5] = (TextView) findViewById(R.id.value6);
+        arrText[6] = (TextView) findViewById(R.id.value7);
+        arrText[7] = (TextView) findViewById(R.id.value8);
+        arrText[8] = (TextView) findViewById(R.id.value9);
+        arrText[9] = (TextView) findViewById(R.id.value10);
+        arrText[10] = (TextView) findViewById(R.id.value11);
 
         arrEditText[0] = (EditText) findViewById(R.id.editText1);
         arrEditText[1] = (EditText) findViewById(R.id.editText2);
@@ -191,32 +190,43 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         arrEditText[10] = (EditText) findViewById(R.id.editText11);
 
 
-
-
     }
 
-    private void addValueToTyp(){
+    private void addValueToTyp() {
         addValueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Value value;
                 LocalDate localDate = LocalDate.now();
                 for (int i = 0; i < arrText.length; i++) {
-                        if (!val[i].toString().equals("")) {
+                    if (!val[i].toString().equals("")) {
 
-                            try {
-                                float tmp = Float.parseFloat(val[i]);
-                                arrComplete.add(arrText[i].getText().toString() + "," + val[i] + "," + localDate);
-                                textAddedSuc.setText("Added Succesfully");
-                                textAddedSuc.setVisibility(View.VISIBLE);
-                            } catch (Exception e){
-                                textAddedSuc.setVisibility(View.VISIBLE);
-                                textAddedSuc.setText("Not valid");
-                                System.out.println("NOT VALID");
-                            }
+                        try {
+                            float tmp = Float.parseFloat(val[i]);
 
+                            //Objekt für Datenbank
+                            value = new Value(-1, arrText[i].getText().toString(), tmp);
+
+                            DataBaseHelper dataBaseHelper = new DataBaseHelper(activity_home_screen.this);
+                            boolean success = dataBaseHelper.addValueToType(value);
+
+                            arrComplete.add(arrText[i].getText().toString() + "," + val[i] + "," + localDate);
+                            textAddedSuc.setText("Added Succesfully");
+                            textAddedSuc.setVisibility(View.VISIBLE);
+
+
+                        } catch (Exception e) {
+                            textAddedSuc.setVisibility(View.VISIBLE);
+                            textAddedSuc.setText("Not valid");
+                            System.out.println("NOT VALID");
                         }
+
+
+                    }
                     //}
                 }
+
+
                 System.out.println(arrComplete.toString());
             }
         });
@@ -240,8 +250,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
     }
 
 
-
-    public static ArrayList<String> getListComplete (){
+    public static ArrayList<String> getListComplete() {
         return arrComplete;
     }
 
@@ -267,10 +276,8 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                 val[i] = editable.toString();
             }
         }
-
-
-
     }
+
 }
 
 
