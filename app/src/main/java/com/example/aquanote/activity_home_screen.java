@@ -12,6 +12,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @RequiresApi(api = Build.VERSION_CODES.O)
@@ -88,6 +90,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
     DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     private TextView textAddedSuc;
+    List<String> selValues;
 
 
     private TextView[] arrText = new TextView[11];
@@ -109,6 +112,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         imageAquariumHome.setImageURI(MainActivity.getPicture());
         myImageViewText.setText("Test");
         checkBox = SelectValuesStart.getCheckBox();
+        selValues = dataBaseHelper.getValueTypes();
         fillList();
         addValueToTyp();
 
@@ -141,23 +145,16 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
 
 
     private void fillList() {
-        /*
-        int t = 0;
-        for (int i = 0; i < checkBox.length; i++) {
-            if (checkBox[i].isChecked()) {
-                arrText[t].setText(checkBox[i].getText());
-                arrLayout[t].setVisibility(View.VISIBLE);
-                arrEditText[t].addTextChangedListener(this);
-                t++;
-                arrText
 
-            }
+        int counter = selValues.size();
+
+        for (int i = 0; i < counter; i++) {
+            arrText[i].setText(selValues.get(i));
+            arrLayout[i].setVisibility(View.VISIBLE);
+            arrEditText[i].addTextChangedListener(this);
         }
 
-         */
-        for (int i = 0; i < dataBaseHelper.getValueTypes().size(); i++) {
-            arrText[i].setText(dataBaseHelper.getValueTypes().get(i));
-        }
+
     }
 
     private void initVar() {
