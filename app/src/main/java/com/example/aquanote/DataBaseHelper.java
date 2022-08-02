@@ -26,8 +26,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     private List<String> VALUE_NAMES;
 
 
-    public DataBaseHelper(@Nullable Context context) {
-        super(context, "values.db", null, 1);
+    public DataBaseHelper(@Nullable Context context, String name) {
+        super(context, name, null, 1);
     }
 
 
@@ -35,17 +35,12 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         VALUE_NAMES = new ArrayList<>();
 
-        //db.execSQL("CREATE TABLE " + SQLLITE_SCHEMA+ " ("+ COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_VALUE_TYPE + " TEXT)");
-        //fillSQLSchema(SelectValuesStart.getCheckBox()[1].getText().toString());
-
-
         if(!(SelectValuesStart.getCheckBox() == null)) {
             for (int i = 0; i < SelectValuesStart.getCheckBox().length; i++) {
                 if (SelectValuesStart.getCheckBox()[i].isChecked()) {
                     VALUE_NAMES.add(SelectValuesStart.getCheckBox()[i].getText().toString());
                 }
             }
-
 
             for (int i = 0; i < VALUE_NAMES.size(); i++) {
                 String VALUE_NAME = VALUE_NAMES.get(i);

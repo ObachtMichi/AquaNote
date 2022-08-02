@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,14 +11,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -102,7 +99,8 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         setContentView(R.layout.activity_home_screen);
 
         //DATABASE
-        dataBaseHelper = new DataBaseHelper(activity_home_screen.this);
+        dataBaseHelper = new DataBaseHelper(activity_home_screen.this, getDBName());
+
 
 
         imageAquariumHome = (ImageView) findViewById(R.id.imageAquariumHome);
@@ -110,7 +108,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         initVar();
         addValueButton = (Button) findViewById(R.id.addValueButton);
         imageAquariumHome.setImageURI(MainActivity.getPicture());
-        myImageViewText.setText("Test");
+        myImageViewText.setText(getDBName());
         checkBox = SelectValuesStart.getCheckBox();
         selValues = dataBaseHelper.getValueTypes();
         fillList();
@@ -212,7 +210,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                             //Objekt für Datenbank
                             value = new Value(-1, arrText[i].getText().toString(), tmp);
 
-                            DataBaseHelper dataBaseHelper = new DataBaseHelper(activity_home_screen.this);
+                            DataBaseHelper dataBaseHelper = new DataBaseHelper(activity_home_screen.this, getDBName());
                             boolean success = dataBaseHelper.addValueToType(value);
 
                             arrComplete.add(arrText[i].getText().toString() + "," + val[i] + "," + localDate);
@@ -281,6 +279,22 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                 val[i] = editable.toString();
             }
         }
+    }
+
+    private String getDBName(){
+
+        if (MainActivity.getName()==null){
+            File f = new File("/data/data/com.example.aquanote/databases/");
+            File[] files = f.listFiles();
+            String[] ret = files[0].toString().split("/");
+
+            return ret[5];
+        } else{
+            return MainActivity.getName();
+        }
+
+
+
     }
 
 

@@ -54,8 +54,4 @@ public class activity_graph extends AppCompatActivity {
         // Your not allowed to go back
     }
 
-
-    private void fillDropDown(){
-
-    }
 }
