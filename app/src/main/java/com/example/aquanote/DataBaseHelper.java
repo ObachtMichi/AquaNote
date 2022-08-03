@@ -21,7 +21,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
     public static final String COLUMN_VALUE_NUMBER= "VALUE_NUMBER";
     public static final String COLUMN_VALUE_DATE= "VALUE_DATE";
-
     public static final String COLUMN_ID = "ID";
 
     //-----------------------------------------Variablen---------------------------------------------------
@@ -79,6 +78,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         cv.put(COLUMN_VALUE_NUMBER, value.getValueNumber());
         cv.put(COLUMN_VALUE_DATE, value.getDate());
 
+
         long insert = db.insert(value.getValueType(), null, cv);
         return insert != -1;
     }
@@ -113,12 +113,12 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         Cursor cursor = db.rawQuery(queryString, null);
 
 
-        if(cursor.moveToFirst()) {
+        if(cursor.moveToLast()) {
             do {
                 float value = cursor.getFloat(1);
                 String datum = cursor.getString(2);
                 retListe.add(new Value(datum, value));
-            } while (cursor.moveToNext());
+            } while (cursor.moveToPrevious());
 
         }
 
