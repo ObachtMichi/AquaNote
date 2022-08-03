@@ -206,7 +206,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                             try {
                                 float tmp = Float.parseFloat(val[i]);
                                 arrComplete.add(arrText[i].getText().toString() + "," + val[i] + "," + localDate);
-                                textAddedSuc.setText("Added Succesfully");
+                                textAddedSuc.setText("Added Successfully");
                                 textAddedSuc.setVisibility(View.VISIBLE);
                             } catch (Exception e){
                                 textAddedSuc.setVisibility(View.VISIBLE);
