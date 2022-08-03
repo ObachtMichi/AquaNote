@@ -364,7 +364,7 @@
         android:fontFamily="@font/montserrat"
         android:visibility="invisible"
         android:gravity="center"
-        android:text="@string/added_successfuly" />
+        android:text="@string/added_successfully" />
 
     <Button
         android:layout_width="match_parent"

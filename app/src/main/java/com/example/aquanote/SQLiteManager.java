@@ -27,8 +27,8 @@ public class SQLiteManager extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public static SQLiteManager instanceOfDatabase(Context context){
-        if (sqLiteManager == null){
+    public static SQLiteManager instanceOfDatabase(Context context) {
+        if (sqLiteManager == null) {
             sqLiteManager = new SQLiteManager(context);
         }
         return sqLiteManager;
@@ -37,21 +37,21 @@ public class SQLiteManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        StringBuilder sql;
-        sql = new StringBuilder()
+        StringBuilder SQL_CREATE_ENTRIES;
+        SQL_CREATE_ENTRIES = new StringBuilder()
                 .append("CREATE TABLE")
                 .append(MainActivity.getName())
                 .append("(")
                 .append(COUNTER)
                 .append(" INTEGER PRIMARY KEY AUTOINCREMENT")
-                .append(ID_FIELD)
-                .append(" INT, ")
+                .append(TYP_FIELD)
                 .append(" TEXT, ")
-                .append(" TEXT, ")
-                .append(DELETED_FIELD)
+                .append(VALUE_FIELD)
                 .append(" TEXT, ");
-
-
+        StringBuilder SQL_DELETE_ENTRIES;
+        SQL_DELETE_ENTRIES = new StringBuilder()
+                .append("DROP TABLE IF EXISTS")
+                .append(MainActivity.getName());
     }
 
     @Override
@@ -60,8 +60,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
     }
 
 
-
-    public void addTypToDatabase(CheckBox[] arr){
+    public void addTypToDatabase(CheckBox[] arr) {
 
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
