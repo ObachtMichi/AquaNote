@@ -14,8 +14,10 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_select_values_start.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.4354166666666667" />
+        <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.29483695652173914" />
         <entry key="app/src/main/res/layout/fragment_graph_fragment.xml" value="0.4420289855072464" />
         <entry key="app/src/main/res/layout/list_items.xml" value="0.575" />
+        <entry key="app/src/main/res/layout/selected_item.xml" value="0.29483695652173914" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.5473958333333333" />
       </map>
     </option>

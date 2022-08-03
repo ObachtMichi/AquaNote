@@ -100,8 +100,8 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
 
     private void dropDownMenu(){
         spinnerDropDown = (Spinner) findViewById(R.id.spinnerDropDown);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(activity_graph.this, android.R.layout.simple_spinner_item, listInStringArr(dataBaseHelper.getValueTypes()));
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(activity_graph.this, R.layout.selected_item, listInStringArr(dataBaseHelper.getValueTypes()));
+        adapter.setDropDownViewResource(R.layout.dropdown_item);
         spinnerDropDown.setAdapter(adapter);
         spinnerDropDown.setOnItemSelectedListener(this);
     }
