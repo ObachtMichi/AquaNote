@@ -18,39 +18,31 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 public class SelectValuesStart extends AppCompatActivity {
 
-    private Button addCustomValue;
-    private Button buttonNextHome;
-    private CheckBox customOne;
-    private CheckBox customTwo;
-    private CheckBox customThree;
-    private CheckBox customFour;
-    private CheckBox customFive;
-    private CheckBox customSix;
-    private CheckBox customSeven;
-    private CheckBox customEight;
-    private CheckBox checkAlkalinity;
-    private CheckBox checkCalcium;
-    private CheckBox checkMagnesium;
-    private CheckBox checkNitrate;
-    private CheckBox checkPhosphate;
-    private TextView textCountLeft;
+    //-----------------------------------------Variablen---------------------------------------------------
+
+    private Button addCustomValue, buttonNextHome, buttonSelectAll;
+    private CheckBox customOne,customTwo,customThree,customFour,customFive,customSix,customSeven,customEight,checkAlkalinity,checkCalcium,checkMagnesium,checkNitrate,checkPhosphate;
+    private TextView textCountLeft,textSelOne;
     private EditText customName;
-    private TextView textSelOne;
-    private Button buttonSelectAll;
     private int i = 5;
     private int counter = 5;
     private static CheckBox[] arr;
     private int w = 0;
+    //-----------------------------------------Variablen---------------------------------------------------
 
 
+
+    //-----------------------------------------Variablen---------------------------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_values_start);
+
+        //-----------------------------------------INIT Variablen---------------------------------------------------
+
         buttonSelectAll = (Button) findViewById(R.id.buttonSelectAll);
         textSelOne = (TextView) findViewById(R.id.textSelOne);
 
@@ -83,6 +75,7 @@ public class SelectValuesStart extends AppCompatActivity {
         arr[9] = customSix;
         arr[10] = customSeven;
         arr[11] = customEight;
+        //-----------------------------------------INIT Variablen---------------------------------------------------
 
 
         buttonSelectAll.setOnClickListener(new View.OnClickListener() {
@@ -161,6 +154,9 @@ public class SelectValuesStart extends AppCompatActivity {
             }
         });
     }
+
+    //-----------------------------------------On Create---------------------------------------------------
+
 
     public static CheckBox[] getCheckBox() {
         return arr;

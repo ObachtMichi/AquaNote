@@ -10,7 +10,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
@@ -26,11 +25,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,95 +34,49 @@ import java.util.List;
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class activity_home_screen extends AppCompatActivity implements TextWatcher {
 
-
+    //-----------------------------------------Variablen---------------------------------------------------
     private ImageView imageAquariumHome;
+    private Button addValueButton;
     private TextView myImageViewText;
     private CheckBox[] checkBox;
-
-    DataBaseHelper dataBaseHelper;
-
+    private DataBaseHelper dataBaseHelper;
     private BottomNavigationView bottomNavigationView;
-
     private String[] val = {"", "", "", "", "", "", "", "", "", "", ""};
-
-    private Button addValueButton;
-    private LinearLayout layout1;
-    private LinearLayout layout2;
-    private LinearLayout layout3;
-    private LinearLayout layout4;
-    private LinearLayout layout5;
-    private LinearLayout layout6;
-    private LinearLayout layout7;
-    private LinearLayout layout8;
-    private LinearLayout layout9;
-    private LinearLayout layout10;
-    private LinearLayout layout11;
-
-    private EditText editText1;
-    private EditText editText2;
-    private EditText editText3;
-    private EditText editText4;
-    private EditText editText5;
-    private EditText editText6;
-    private EditText editText7;
-    private EditText editText8;
-    private EditText editText9;
-    private EditText editText10;
-    private EditText editText11;
-
     private EditText[] arrEditText = new EditText[11];
-
     private static ArrayList<String> arrComplete = new ArrayList<String>();
-
     private LinearLayout[] arrLayout = new LinearLayout[11];
-
-    private TextView value1;
-    private TextView value2;
-    private TextView value3;
-    private TextView value4;
-    private TextView value5;
-    private TextView value6;
-    private TextView value7;
-    private TextView value8;
-    private TextView value9;
-    private TextView value10;
-    private TextView value11;
-
-    DateTimeFormatter dateTime = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
     private TextView textAddedSuc;
-    List<String> selValues;
-
-
+    private List<String> selValues;
     private TextView[] arrText = new TextView[11];
 
+    //-----------------------------------------Variablen---------------------------------------------------
 
+
+    //-----------------------------------------On Create---------------------------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        //DATABASE
+        //INIT Variablen
         dataBaseHelper = new DataBaseHelper(activity_home_screen.this, getDBName());
-
-
-
         imageAquariumHome = (ImageView) findViewById(R.id.imageAquariumHome);
         myImageViewText = (TextView) findViewById(R.id.myImageViewText);
-        initVar();
         addValueButton = (Button) findViewById(R.id.addValueButton);
         myImageViewText.setText(getDBName());
         checkBox = SelectValuesStart.getCheckBox();
         selValues = dataBaseHelper.getValueTypes();
+        textAddedSuc = (TextView) findViewById(R.id.textAddedSuc);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.homeScreen);
+
+
+        //Startup Methoden
         saveImageToInternalStorage(MainActivity.getPicture());
+        initVar();
         setImageAquariumHome();
         fillList();
         addValueToTyp();
-
-        textAddedSuc = (TextView) findViewById(R.id.textAddedSuc);
-
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setSelectedItemId(R.id.homeScreen);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -146,7 +96,10 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                 return true;
             }
         });
+
+
     }
+    //-----------------------------------------On Create---------------------------------------------------
 
 
     private void fillList() {

@@ -1,14 +1,11 @@
 package com.example.aquanote;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.CheckBox;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 
 public class SQLiteManager extends SQLiteOpenHelper {
@@ -24,8 +21,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
     private static final String VALUE_FIELD = "value";
     private static final String DELETED_FIELD = "deleted";
 
-    @SuppressLint("SimpleDataFormat")
-    private static final DateFormat dataFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
 
     public SQLiteManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

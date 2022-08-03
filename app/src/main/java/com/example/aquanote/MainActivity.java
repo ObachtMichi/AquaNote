@@ -20,10 +20,11 @@ import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity {
+
+    //-----------------------------------------Variablen---------------------------------------------------
 
     private static Bitmap bitmap;
     private EditText nameAquaInput;
@@ -31,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton addPhotoButton;
     private TextView immNameTextField;
     public static String name;
+
+    //-----------------------------------------Variablen---------------------------------------------------
+
+
+
+    //-----------------------------------------On Create---------------------------------------------------
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -71,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    //-----------------------------------------On Create---------------------------------------------------
+
 
 
 

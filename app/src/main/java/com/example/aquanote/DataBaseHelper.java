@@ -1,27 +1,23 @@
 package com.example.aquanote;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
 import android.os.Build;
-import android.provider.MediaStore;
+
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Currency;
 import java.util.List;
-import java.util.Locale;
 
 
 public class DataBaseHelper extends SQLiteOpenHelper{
+
+    //-----------------------------------------Variablen---------------------------------------------------
 
     public static final String COLUMN_VALUE_NUMBER= "VALUE_NUMBER";
     public static final String COLUMN_VALUE_DATE= "VALUE_DATE";
@@ -29,11 +25,16 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     public static final String COLUMN_ID = "ID";
     private List<String> VALUE_NAMES;
 
+    //-----------------------------------------Variablen---------------------------------------------------
 
+    //Constructor
     public DataBaseHelper(@Nullable Context context, String name) {
         super(context, name, null, 1);
     }
 
+
+
+    //-----------------------------------------On Create---------------------------------------------------
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -60,22 +61,12 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             cv.put("name", VALUE_NAMES.get(i));
             db.insert("sqlite_sequence", null, cv);
         }
-/*
-        //Image
-        String BLOB_QUERY = "CREATE TABLE image (image BLOB)";
-        db.execSQL(BLOB_QUERY);
-
-        byte[] byteArr = activity_home_screen.getBytes(MainActivity.getPicture());
-
-        ContentValues cv = new  ContentValues();
-        cv.put("image", byteArr);
-        db.insert("image", null, cv);
-
-
- */
-
 
     }
+    //-----------------------------------------On Create---------------------------------------------------
+
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
@@ -117,29 +108,5 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         return returnList;
     }
 
-/*
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public Bitmap getAquariumPicture(){
-
-        Bitmap bmp = null;
-        String queryString = "SELECT image FROM image";
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(queryString, null);
-
-        if(cursor.moveToFirst()) {
-            do {
-                byte[] byteArr;
-                byteArr = cursor.getBlob(0);
-                bmp = activity_home_screen.getImage(byteArr);
-            } while (cursor.moveToNext());
-        }
-
-
-        cursor.close();
-        db.close();
-        return bmp;
-    }
-
- */
 
 }
