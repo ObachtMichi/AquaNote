@@ -23,7 +23,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     public static final String COLUMN_VALUE_DATE= "VALUE_DATE";
 
     public static final String COLUMN_ID = "ID";
-    private List<String> VALUE_NAMES;
 
     //-----------------------------------------Variablen---------------------------------------------------
 
@@ -39,7 +38,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(SQLiteDatabase db) {
-        VALUE_NAMES = new ArrayList<>();
+        List<String> VALUE_NAMES = new ArrayList<>();
 
         if(!(SelectValuesStart.getCheckBox() == null)) {
             for (int i = 0; i < SelectValuesStart.getCheckBox().length; i++) {
@@ -81,10 +80,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         cv.put(COLUMN_VALUE_DATE, value.getDate());
 
         long insert = db.insert(value.getValueType(), null, cv);
-        if(insert == -1){
-            return false;
-        }
-        return true;
+        return insert != -1;
     }
 
 
@@ -106,6 +102,29 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         cursor.close();
         db.close();
         return returnList;
+    }
+
+
+    public ArrayList<Value> getDateAndValue(String type){
+        ArrayList<Value> retListe = new ArrayList<>();
+
+        String queryString = "SELECT * FROM " + type;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+
+        if(cursor.moveToFirst()) {
+            do {
+                float value = cursor.getFloat(1);
+                String datum = cursor.getString(2);
+                retListe.add(new Value(datum, value));
+            } while (cursor.moveToNext());
+
+        }
+
+        cursor.close();
+        db.close();
+        return retListe;
     }
 
 

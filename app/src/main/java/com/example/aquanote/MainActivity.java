@@ -3,6 +3,7 @@ package com.example.aquanote;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -124,9 +125,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean checkDBExist(){
-        File f = new File("/data/data/com.example.aquanote/databases");
-        if (f.exists()) return true;
-        return false;
+        @SuppressLint("SdCardPath") File f = new File("/data/data/com.example.aquanote/databases");
+        return f.exists();
     }
 
 

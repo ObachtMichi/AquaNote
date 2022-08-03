@@ -236,7 +236,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         }
     }
 
-    private String getDBName(){
+    public static String getDBName(){
 
         if (MainActivity.getName()==null){
             File f = new File("/data/data/com.example.aquanote/databases/");
