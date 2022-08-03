@@ -60,7 +60,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
             cv.put("name", VALUE_NAMES.get(i));
             db.insert("sqlite_sequence", null, cv);
         }
-
+/*
         //Image
         String BLOB_QUERY = "CREATE TABLE image (image BLOB)";
         db.execSQL(BLOB_QUERY);
@@ -71,6 +71,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         cv.put("image", byteArr);
         db.insert("image", null, cv);
 
+
+ */
 
 
     }
@@ -115,7 +117,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         return returnList;
     }
 
-
+/*
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Bitmap getAquariumPicture(){
 
@@ -131,12 +133,13 @@ public class DataBaseHelper extends SQLiteOpenHelper{
                 bmp = activity_home_screen.getImage(byteArr);
             } while (cursor.moveToNext());
         }
-        
+
 
         cursor.close();
         db.close();
         return bmp;
     }
 
+ */
 
 }

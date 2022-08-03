@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -25,6 +26,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -115,6 +118,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         myImageViewText.setText(getDBName());
         checkBox = SelectValuesStart.getCheckBox();
         selValues = dataBaseHelper.getValueTypes();
+        saveImageToInternalStorage(MainActivity.getPicture());
         setImageAquariumHome();
         fillList();
         addValueToTyp();
@@ -293,7 +297,12 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
     }
 
     private void setImageAquariumHome(){
-        imageAquariumHome.setImageBitmap(dataBaseHelper.getAquariumPicture());
+        try{
+            Bitmap bitmap = BitmapFactory.decodeFile("/data/data/com.example.aquanote/files/aquariumPicture.png");
+            imageAquariumHome.setImageBitmap(bitmap);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -305,6 +314,24 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
 
     public static Bitmap getImage(byte[] image) {
         return BitmapFactory.decodeByteArray(image, 0, image.length);
+    }
+
+    public void saveImageToInternalStorage(Bitmap image) {
+
+        if (image == null){
+            return;
+        }
+
+        try {
+            Bitmap smallBmp = ImageResizer.reduceBitmapSize(image, 240000);
+
+            FileOutputStream fos = openFileOutput("aquariumPicture.png", Context.MODE_PRIVATE);
+
+            smallBmp.compress(Bitmap.CompressFormat.PNG, 0, fos);
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
