@@ -5,8 +5,11 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
@@ -20,7 +23,9 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -107,10 +112,10 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         myImageViewText = (TextView) findViewById(R.id.myImageViewText);
         initVar();
         addValueButton = (Button) findViewById(R.id.addValueButton);
-        imageAquariumHome.setImageURI(MainActivity.getPicture());
         myImageViewText.setText(getDBName());
         checkBox = SelectValuesStart.getCheckBox();
         selValues = dataBaseHelper.getValueTypes();
+        setImageAquariumHome();
         fillList();
         addValueToTyp();
 
@@ -137,8 +142,6 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                 return true;
             }
         });
-
-
     }
 
 
@@ -217,19 +220,14 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                             textAddedSuc.setText("Added Succesfully");
                             textAddedSuc.setVisibility(View.VISIBLE);
 
-
                         } catch (Exception e) {
                             textAddedSuc.setVisibility(View.VISIBLE);
                             textAddedSuc.setText("Not valid");
                             System.out.println("NOT VALID");
                         }
-
-
                     }
                     //}
                 }
-
-
                 System.out.println(arrComplete.toString());
             }
         });
@@ -292,13 +290,22 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         } else{
             return MainActivity.getName();
         }
+    }
 
-
-
+    private void setImageAquariumHome(){
+        imageAquariumHome.setImageBitmap(dataBaseHelper.getAquariumPicture());
     }
 
 
+    public static byte[] getBytes(Bitmap bitmap) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+        return stream.toByteArray();
+    }
 
+    public static Bitmap getImage(byte[] image) {
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
+    }
 }
 
 
