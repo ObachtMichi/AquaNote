@@ -12,20 +12,18 @@ public class Value {
     SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yy 'at' HH:mm");
     String date;
 
-    public Value(){
-        this.date = sdf.format(new Date());
-    }
-
-    public Value(String date, float valueNumber){
-        this.date = date;
-        this.valueNumber = valueNumber;
-    }
-    public Value(int id, String valueType, float valueNumber) {
-        this.id = id;
+    public Value(String valueType, float valueNumber){
         this.valueType = valueType;
         this.valueNumber = valueNumber;
         this.date = sdf.format(new Date());
     }
+
+    public Value(int id, String date, float valueNumber){
+        this.id = id;
+        this.date = date;
+        this.valueNumber = valueNumber;
+    }
+
 
     @Override
     public String toString() {

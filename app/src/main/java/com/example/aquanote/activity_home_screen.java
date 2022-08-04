@@ -168,7 +168,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                             float tmp = Float.parseFloat(val[i]);
 
                             //Objekt für Datenbank
-                            value = new Value(-1, arrText[i].getText().toString(), tmp);
+                            value = new Value(arrText[i].getText().toString(), tmp);
 
                             DataBaseHelper dataBaseHelper = new DataBaseHelper(activity_home_screen.this, getDBName());
                             boolean success = dataBaseHelper.addValueToType(value);

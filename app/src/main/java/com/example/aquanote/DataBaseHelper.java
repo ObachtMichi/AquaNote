@@ -115,9 +115,10 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
         if(cursor.moveToLast()) {
             do {
+                int id = cursor.getInt(0);
                 float value = cursor.getFloat(1);
                 String datum = cursor.getString(2);
-                retListe.add(new Value(datum, value));
+                retListe.add(new Value(id, datum, value));
             } while (cursor.moveToPrevious());
 
         }

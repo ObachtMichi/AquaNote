@@ -4,6 +4,7 @@ package com.example.aquanote;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,11 +22,13 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView value;
         private TextView date;
+        private Button buttonSelectEntry;
 
         public MyViewHolder(final View view){
             super(view);
             value = view.findViewById(R.id.textListValue);
             date = view.findViewById(R.id.textListDate);
+            buttonSelectEntry = view.findViewById(R.id.buttonSelectEntry);
         }
 
     }
@@ -41,8 +44,10 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     public void onBindViewHolder(@NonNull AdapterClass.MyViewHolder holder, int position) {
         float value = valueList.get(position).getValueNumber();
         String date = valueList.get(position).getDate();
+        int id = valueList.get(position).getId();
         holder.value.setText(String.valueOf(value));
         holder.date.setText(date);
+        holder.buttonSelectEntry.setText(String.valueOf(id));
 
     }
 
