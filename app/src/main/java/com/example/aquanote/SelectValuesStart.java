@@ -219,7 +219,8 @@ public class SelectValuesStart extends AppCompatActivity {
                 customName.setInputType(InputType.TYPE_CLASS_TEXT);
                 dialog.setView(customName);
                 dialog.setCancelable(true);
-                dialog.setTitle("Change: " + arr[i].getText().toString() );
+                customName.setHint(arr[i].getText().toString());
+                dialog.setTitle("Change name:");
                 dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int j) {
