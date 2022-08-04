@@ -9,15 +9,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -34,6 +39,7 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
     private RecyclerView recyclerView;
     private ArrayList<Value> valueList;
     private static String currentValue;
+    private Button btn_AddEntry;
 
     //-----------------------------------------Variablen---------------------------------------------------
 
@@ -45,6 +51,8 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
+        btn_AddEntry = findViewById(R.id.btn_AddEntry);
+        btn_AddEntry();
         dataBaseHelper = new DataBaseHelper(activity_graph.this, activity_home_screen.getDBName());
         dropDownMenu();
 
@@ -142,7 +150,46 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
     }
 
 
-    public void alertDialog(){
+    private void btn_AddEntry(){
+        btn_AddEntry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                final Dialog dialogAddNew = new Dialog(view.getContext());
+                dialogAddNew.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialogAddNew.setCancelable(true);
+                dialogAddNew.setContentView(R.layout.add_new_entry);
+                dialogAddNew.show();
+
+                EditText addValue = dialogAddNew.findViewById(R.id.addValue);
+                Button btn_NewCancel = dialogAddNew.findViewById(R.id.btn_NewCancel);
+                Button btn_NewAccept = dialogAddNew.findViewById(R.id.btn_NewAccept);
+
+                btn_NewCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogAddNew.dismiss();
+                    }
+                });
+
+                btn_NewAccept.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(!(addValue.getText().toString().equals("") && addValue.getText().toString().equals("."))){
+                            Value newValue = new Value(currentValue, Float.parseFloat(addValue.getText().toString()));
+                            dataBaseHelper.addEntry(newValue);
+                            finish();
+                            startActivity(getIntent());
+                        } else{
+                            Toast.makeText(activity_graph.this, "Not Valid", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+
+
+            }
+        });
     }
 }

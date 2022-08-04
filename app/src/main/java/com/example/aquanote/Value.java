@@ -12,11 +12,6 @@ public class Value {
     SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yy 'at' HH:mm");
     String date;
 
-    public Value(String valueType, float valueNumber){
-        this.valueType = valueType;
-        this.valueNumber = valueNumber;
-        this.date = sdf.format(new Date());
-    }
 
     public Value(int id, String valueType, float valueNumber){
         this.id = id;
@@ -33,6 +28,12 @@ public class Value {
     public Value(int id, String valueType){
         this.valueType = valueType;
         this.id= id;
+    }
+
+    public Value(String valueType, float valueNumber){
+        this.valueType = valueType;
+        this.valueNumber = valueNumber;
+        this.date = sdf.format(new Date());
     }
 
 

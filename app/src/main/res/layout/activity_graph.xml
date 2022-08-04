@@ -21,7 +21,14 @@
             android:id="@+id/spinnerDropDown"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="7" />
+            android:layout_weight="4" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Entry"
+            android:id="@+id/btn_AddEntry"
+            android:fontFamily="@font/montserrat"
+            android:textSize="15dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,9 +53,10 @@
                 android:layout_weight="1"
                 android:text="Value" />
 
-
-
         </LinearLayout>
+
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

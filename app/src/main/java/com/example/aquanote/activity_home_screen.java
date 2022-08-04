@@ -171,7 +171,7 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                             value = new Value(arrText[i].getText().toString(), tmp);
 
                             DataBaseHelper dataBaseHelper = new DataBaseHelper(activity_home_screen.this, getDBName());
-                            boolean success = dataBaseHelper.addValueToType(value);
+                            boolean success = dataBaseHelper.addEntry(value);
 
                             arrComplete.add(arrText[i].getText().toString() + "," + val[i] + "," + localDate);
                             textAddedSuc.setText("Added Succesfully");

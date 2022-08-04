@@ -71,7 +71,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     }
 
 
-    public boolean addValueToType(Value value){
+    public boolean addEntry(Value value){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -153,7 +153,6 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         } else{
             return false;
         }
-
-
     }
+
 }
