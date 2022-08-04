@@ -1,15 +1,23 @@
 package com.example.aquanote;
 
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -38,7 +46,75 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                 @Override
                 public void onClick(View view) {
                     activity_graph ag = new activity_graph();
-                    ag.deleteEntry(new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString()));
+
+
+                    final Dialog dialog = new Dialog(view.getContext());
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setCancelable(true);
+                    dialog.setContentView(R.layout.dialog_value_type);
+                    dialog.show();
+
+                    final Button btn_Cancel = dialog.findViewById(R.id.btn_Cancel);
+                    final Button btn_Accept = dialog.findViewById(R.id.btn_Accept);
+                    final Button btn_Delete = dialog.findViewById(R.id.btn_Delete);
+
+
+                    btn_Delete.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            final Dialog dialogSure = new Dialog(view.getContext());
+                            dialogSure.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                            dialogSure.setCancelable(false);
+                            dialogSure.setContentView(R.layout.delete_sure);
+                            dialogSure.show();
+
+                            final Button btn_CancelSure = dialogSure.findViewById(R.id.btn_CancelSure);
+                            final Button btn_DeleteSure = dialogSure.findViewById(R.id.btn_DeleteSure);
+
+                            btn_DeleteSure.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    ag.deleteEntry(new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString()));
+                                    dialogSure.dismiss();
+                                    dialog.dismiss();
+
+                                }
+                            });
+
+                            btn_CancelSure.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    dialogSure.dismiss();
+                                }
+                            });
+
+
+
+                        }
+                    });
+                    btn_Cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
+
+
+
+
+
+
+                    //ag.alertDialog();
+/*
+
+
+
+
+
+*/
+
                 }
             });
         }

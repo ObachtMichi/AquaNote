@@ -2,11 +2,14 @@ package com.example.aquanote;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,7 +18,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -50,9 +52,7 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
         recyclerView = findViewById(R.id.recyclerView);
         valueList = new ArrayList<>();
         setValueInfo();
-        //setAdapter();
         //--------RecyclerView--------
-
 
 
 
@@ -133,5 +133,11 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
 
     public void deleteEntry(Value value){
         dataBaseHelper.deleteEntry(value);
+    }
+
+
+
+    public void alertDialog(){
+
     }
 }

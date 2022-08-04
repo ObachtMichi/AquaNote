@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="5dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="@font/montserrat"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Edit or Delete value"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ERROR"
+        android:fontFamily="@font/montserrat"
+        android:id="@+id/editValue" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/btn_Cancel"
+                android:layout_marginRight="5dp"
+                android:fontFamily="@font/montserrat"
+                android:layout_marginLeft="5dp"
+                android:text="Cancel"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/btn_Delete"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Delete"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:id="@+id/btn_Accept"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat"
+                android:text="Accept"/>
+
+
+
+
+
+        </LinearLayout>
+
+
+</LinearLayout>
