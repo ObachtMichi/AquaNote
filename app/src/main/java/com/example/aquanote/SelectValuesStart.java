@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class SelectValuesStart extends AppCompatActivity {
@@ -138,6 +139,12 @@ public class SelectValuesStart extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int j) {
                             if (!customName.getText().toString().equals("")) {
+                                for (int k = 0; k < customName.getText().length(); k++) {
+                                    if (customName.getText().toString().contains(" ")){
+                                        Toast.makeText(SelectValuesStart.this, "No space allowed", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+                                }
                                 arr[i].setText(customName.getText().toString());
                                 arr[i].setAlpha(1);
                                 arr[i].setClickable(true);
