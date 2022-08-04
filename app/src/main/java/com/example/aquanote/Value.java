@@ -9,7 +9,7 @@ public class Value {
     private int id;
     private String valueType;
     private float valueNumber;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yy 'at' HH:mm:ss");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yy 'at' HH:mm");
     String date;
 
     public Value(){
