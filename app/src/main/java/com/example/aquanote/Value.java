@@ -18,9 +18,9 @@ public class Value {
         this.date = sdf.format(new Date());
     }
 
-    public Value(int id, String date, float valueNumber){
+    public Value(int id, String valueType, float valueNumber){
         this.id = id;
-        this.date = date;
+        this.valueType = valueType;
         this.valueNumber = valueNumber;
     }
     public Value(int id, String date, float valueNumber, String valueType){

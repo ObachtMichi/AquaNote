@@ -143,4 +143,17 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     }
 
 
+    public Boolean changeEntry(Value value) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "UPDATE " + value.getValueType() + " SET VALUE_NUMBER = '" + value.getValueNumber() + "' WHERE ID= " + value.getId();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+            return true;
+        } else{
+            return false;
+        }
+
+
+    }
 }

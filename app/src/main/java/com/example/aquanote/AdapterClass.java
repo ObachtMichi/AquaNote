@@ -52,11 +52,14 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                     dialog.setCancelable(true);
                     dialog.setContentView(R.layout.dialog_value_type);
+                    EditText editValue = dialog.findViewById(R.id.editValue);
+                    editValue.setHint(value.getText().toString());
                     dialog.show();
 
                     final Button btn_Cancel = dialog.findViewById(R.id.btn_Cancel);
                     final Button btn_Accept = dialog.findViewById(R.id.btn_Accept);
                     final Button btn_Delete = dialog.findViewById(R.id.btn_Delete);
+
 
 
                     btn_Delete.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +81,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                                     ag.deleteEntry(new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString()));
                                     dialogSure.dismiss();
                                     dialog.dismiss();
-
                                 }
                             });
 
@@ -88,11 +90,11 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                                     dialogSure.dismiss();
                                 }
                             });
-
-
-
                         }
                     });
+
+
+
                     btn_Cancel.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -100,20 +102,17 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                         }
                     });
 
+                    btn_Accept.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Value nValue = new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString(), Float.valueOf(editValue.getText().toString()));
+                            ag.changeValue(nValue);
+                            dialog.dismiss();
+                        }
+                    });
 
 
 
-
-
-
-                    //ag.alertDialog();
-/*
-
-
-
-
-
-*/
 
                 }
             });

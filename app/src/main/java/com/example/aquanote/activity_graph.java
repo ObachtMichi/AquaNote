@@ -135,6 +135,9 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
         dataBaseHelper.deleteEntry(value);
     }
 
+    public void changeValue(Value value){
+        dataBaseHelper.changeEntry(value);
+    }
 
 
     public void alertDialog(){
