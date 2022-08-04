@@ -83,9 +83,14 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                                     ag.deleteEntry(new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString()));
                                     dialogSure.dismiss();
                                     dialog.dismiss();
+
+
                                     Intent i = new Intent(view.getContext(), activity_graph.class);
                                     i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                     view.getContext().startActivity(i);
+
+
+
                                 }
                             });
 

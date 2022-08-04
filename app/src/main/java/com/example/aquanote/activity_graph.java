@@ -37,9 +37,9 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
     private Spinner spinnerDropDown;
     private static DataBaseHelper dataBaseHelper;
     private RecyclerView recyclerView;
-    private ArrayList<Value> valueList;
     private static String currentValue;
     private Button btn_AddEntry;
+    private static int currVal;
 
     //-----------------------------------------Variablen---------------------------------------------------
 
@@ -58,8 +58,7 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
 
         //--------RecyclerView--------
         recyclerView = findViewById(R.id.recyclerView);
-        valueList = new ArrayList<>();
-        setValueInfo();
+
         //--------RecyclerView--------
 
 
@@ -114,11 +113,14 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
         adapter.setDropDownViewResource(R.layout.dropdown_item);
         spinnerDropDown.setAdapter(adapter);
         spinnerDropDown.setOnItemSelectedListener(this);
+        spinnerDropDown.setSelection(currVal);
+
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
         currentValue = parent.getItemAtPosition(position).toString();
+        currVal = (int) parent.getItemIdAtPosition(position);
         setAdapter();
         //Toast.makeText(parent.getContext(), text , Toast.LENGTH_SHORT).show();
     }
@@ -127,16 +129,14 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
 
-    private void setValueInfo(){
 
-    }
-
-    private void setAdapter() {
+    public void setAdapter() {
         AdapterClass adapter = new AdapterClass(dataBaseHelper.getDateAndValue(currentValue));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
+
 
     }
 
@@ -161,6 +161,7 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
                 dialogAddNew.setContentView(R.layout.add_new_entry);
                 dialogAddNew.show();
 
+
                 EditText addValue = dialogAddNew.findViewById(R.id.addValue);
                 Button btn_NewCancel = dialogAddNew.findViewById(R.id.btn_NewCancel);
                 Button btn_NewAccept = dialogAddNew.findViewById(R.id.btn_NewAccept);
@@ -175,9 +176,10 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
                 btn_NewAccept.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(!(addValue.getText().toString().equals("") && addValue.getText().toString().equals("."))){
+                        if(!(addValue.getText().toString().equals("") || addValue.getText().toString().equals("."))){
                             Value newValue = new Value(currentValue, Float.parseFloat(addValue.getText().toString()));
                             dataBaseHelper.addEntry(newValue);
+                            dialogAddNew.dismiss();
                             finish();
                             startActivity(getIntent());
                         } else{
