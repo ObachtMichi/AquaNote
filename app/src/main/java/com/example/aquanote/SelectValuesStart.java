@@ -96,7 +96,7 @@ public class SelectValuesStart extends AppCompatActivity {
                 if(w == 0) {
 
                     for (int j = 0; j < arr.length-1; j++) {
-                        if(!arr[j].getText().equals("X"))
+                        if(!arr[j].getText().equals("valueNameDenKeinerHernimmt"))
                             arr[j].setChecked(true);
                     }
                     w = 1;
@@ -132,12 +132,14 @@ public class SelectValuesStart extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (i < 11) {
+
                     AlertDialog.Builder dialog = new AlertDialog.Builder(SelectValuesStart.this);
                     customName = new EditText(SelectValuesStart.this);
-                    customName.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                    customName.setInputType(InputType.TYPE_CLASS_TEXT);
                     dialog.setView(customName);
                     dialog.setCancelable(true);
-                    dialog.setTitle("Please enter a name");
+                    customName.setHint("New Name");
+                    dialog.setTitle("Please enter a name:");
                     dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int j) {
@@ -160,6 +162,13 @@ public class SelectValuesStart extends AppCompatActivity {
                                 for (char c : tmp) {
                                     if(!Character.isLetter(c)) {
                                         Toast.makeText(SelectValuesStart.this, "No valid name", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+                                }
+
+                                for (int k = 0; k < arr.length; k++) {
+                                    if (customName.getText().toString().equals(arr[k].getText().toString())){
+                                        Toast.makeText(SelectValuesStart.this, "Name already in use", Toast.LENGTH_SHORT).show();
                                         return;
                                     }
                                 }
@@ -246,11 +255,18 @@ public class SelectValuesStart extends AppCompatActivity {
                                     return;
                                 }
                             }
+
+                            for (int k = 0; k < arr.length; k++) {
+                                if (customName.getText().toString().equals(arr[k].getText().toString())){
+                                    Toast.makeText(SelectValuesStart.this, "Name already in use", Toast.LENGTH_SHORT).show();
+                                    arr[i].setChecked(false);
+                                    return;
+                                }
+                            }
                             arr[i].setText(customName.getText().toString());
                             arr[i].setAlpha(1);
                             arr[i].setClickable(true);
                             arr[i].setChecked(true);
-                            textCountLeft.setText(counter + " left");
                         }
 
                     }
