@@ -31,10 +31,12 @@ public class activity_Settings extends AppCompatActivity {
                         break;
                     case R.id.graph:
                         Intent intentGraph = new Intent(activity_Settings.this, activity_graph.class);
+                        intentGraph.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(intentGraph);
                         break;
                     case R.id.homeScreen:
                         Intent intentHome = new Intent(activity_Settings.this, activity_home_screen.class);
+                        intentHome.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(intentHome);
                         break;
                 }

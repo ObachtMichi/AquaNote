@@ -198,12 +198,14 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void nextSettings() {
         Intent i = new Intent(this, activity_Settings.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void nextGraph() {
         Intent i = new Intent(this, activity_graph.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(i);
     }
 

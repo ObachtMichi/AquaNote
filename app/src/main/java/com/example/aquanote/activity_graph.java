@@ -68,12 +68,14 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
                 switch (item.getItemId()){
                     case R.id.settings:
                         Intent intentSettings = new Intent(activity_graph.this, activity_Settings.class);
+                        intentSettings.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(intentSettings);
                         break;
                     case R.id.graph:
                         break;
                     case R.id.homeScreen:
                         Intent intentHome = new Intent(activity_graph.this, activity_home_screen.class);
+                        intentHome.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(intentHome);
                         break;
                 }

@@ -19,10 +19,11 @@
             android:exported="false"
             android:label=""
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
+        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
         <activity
             android:name=".activity_graph"
             android:exported="false"
+            android:windowSoftInputMode="adjustNothing"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
@@ -42,7 +43,7 @@
             android:exported="false"
             android:label=""
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
+        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
