@@ -28,10 +28,10 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
     //-----------------------------------------Variablen---------------------------------------------------
 
     private Spinner spinnerDropDown;
-    private DataBaseHelper dataBaseHelper;
+    private static DataBaseHelper dataBaseHelper;
     private RecyclerView recyclerView;
     private ArrayList<Value> valueList;
-    private String currentValue;
+    private static String currentValue;
 
     //-----------------------------------------Variablen---------------------------------------------------
 
@@ -128,5 +128,10 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
+    }
+
+
+    public void deleteEntry(Value value){
+        dataBaseHelper.deleteEntry(value);
     }
 }

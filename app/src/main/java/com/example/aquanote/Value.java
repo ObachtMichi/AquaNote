@@ -23,6 +23,17 @@ public class Value {
         this.date = date;
         this.valueNumber = valueNumber;
     }
+    public Value(int id, String date, float valueNumber, String valueType){
+        this.id = id;
+        this.date = date;
+        this.valueNumber = valueNumber;
+        this.valueType=valueType;
+    }
+
+    public Value(int id, String valueType){
+        this.valueType = valueType;
+        this.id= id;
+    }
 
 
     @Override

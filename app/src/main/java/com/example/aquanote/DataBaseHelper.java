@@ -48,7 +48,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
             for (int i = 0; i < VALUE_NAMES.size(); i++) {
                 String VALUE_NAME = VALUE_NAMES.get(i);
-                String createTableStatement = "CREATE TABLE " + VALUE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_VALUE_NUMBER + " FLOAT, " + COLUMN_VALUE_DATE + " TEXT)";
+                String createTableStatement = "CREATE TABLE " + VALUE_NAME + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_VALUE_NUMBER + " FLOAT, " + COLUMN_VALUE_DATE + " TEXT, " + " VALUE_TYP Text)";
                 db.execSQL(createTableStatement);
             }
            }
@@ -77,6 +77,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_VALUE_NUMBER, value.getValueNumber());
         cv.put(COLUMN_VALUE_DATE, value.getDate());
+        cv.put("VALUE_TYP", value.getValueType());
 
 
         long insert = db.insert(value.getValueType(), null, cv);
@@ -118,7 +119,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
                 int id = cursor.getInt(0);
                 float value = cursor.getFloat(1);
                 String datum = cursor.getString(2);
-                retListe.add(new Value(id, datum, value));
+                String typ = cursor.getString(3);
+                retListe.add(new Value(id, datum, value, typ));
             } while (cursor.moveToPrevious());
 
         }
@@ -126,6 +128,18 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         cursor.close();
         db.close();
         return retListe;
+    }
+
+    public Boolean deleteEntry(Value value){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "DELETE FROM " + value.getValueType() + " WHERE ID = " + value.getId();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+            return true;
+        } else{
+            return false;
+        }
     }
 
 

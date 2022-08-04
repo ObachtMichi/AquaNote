@@ -1,6 +1,8 @@
 package com.example.aquanote;
 
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,18 +20,29 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     public AdapterClass(ArrayList<Value> valueList){
         this.valueList = valueList;
     }
+    private Value val;
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView value;
-        private TextView date;
+        private TextView value, date, typ;
         private Button buttonSelectEntry;
+        private String aquariumName = MainActivity.getName();
 
         public MyViewHolder(final View view){
             super(view);
             value = view.findViewById(R.id.textListValue);
             date = view.findViewById(R.id.textListDate);
             buttonSelectEntry = view.findViewById(R.id.buttonSelectEntry);
+            typ = view.findViewById(R.id.textValueTyp);
+
+            buttonSelectEntry.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    activity_graph ag = new activity_graph();
+                    ag.deleteEntry(new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString()));
+                }
+            });
         }
+
 
     }
 
@@ -45,6 +58,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
         float value = valueList.get(position).getValueNumber();
         String date = valueList.get(position).getDate();
         int id = valueList.get(position).getId();
+        String typVar = valueList.get(position).getValueType();
+        holder.typ.setText(typVar);
         holder.value.setText(String.valueOf(value));
         holder.date.setText(date);
         holder.buttonSelectEntry.setText(String.valueOf(id));
