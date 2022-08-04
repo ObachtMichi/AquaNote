@@ -79,11 +79,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                             btn_DeleteSure.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    if (editValue.getText().toString().equals("")){
-                                        ag.deleteEntry(new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString()));
-                                    } else {
-                                        ag.deleteEntry(new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), editValue.getText().toString()));
-                                    }
+
+                                    ag.deleteEntry(new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString()));
                                     dialogSure.dismiss();
                                     dialog.dismiss();
                                     Intent i = new Intent(view.getContext(), activity_graph.class);
@@ -113,17 +110,22 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                     btn_Accept.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if (!(editValue.getText().toString().equals(""))){
-                                Value nValue = new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString(), Float.valueOf(editValue.getText().toString()));
-                                ag.changeValue(nValue);
+                            if (editValue.getText().toString().equals(".")){
+                                Toast.makeText(view.getContext(), "Not Valid", Toast.LENGTH_SHORT).show();
                             } else {
-                                Value nValue = new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString(), Float.valueOf(value.getText().toString()));
-                                ag.changeValue(nValue);
+                                if (!(editValue.getText().toString().equals(""))) {
+                                    Value nValue = new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString(), Float.valueOf(editValue.getText().toString()));
+                                    ag.changeValue(nValue);
+                                } else {
+                                    Value nValue = new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString(), Float.valueOf(value.getText().toString()));
+                                    ag.changeValue(nValue);
+                                }
+
+                                dialog.dismiss();
+                                Intent i = new Intent(view.getContext(), activity_graph.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                view.getContext().startActivity(i);
                             }
-                            dialog.dismiss();
-                            Intent i = new Intent(view.getContext(), activity_graph.class);
-                            i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                            view.getContext().startActivity(i);
                         }
                     });
 
