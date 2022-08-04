@@ -32,6 +32,7 @@ public class SelectValuesStart extends AppCompatActivity {
     private int counter = 5;
     private static CheckBox[] arr;
     private int w = 0;
+    private String tmp = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     //-----------------------------------------Variablen---------------------------------------------------
 
 
@@ -76,6 +77,15 @@ public class SelectValuesStart extends AppCompatActivity {
         arr[9] = customSix;
         arr[10] = customSeven;
         arr[11] = customEight;
+
+        changeNamePreDef(0);
+        changeNamePreDef(1);
+        changeNamePreDef(2);
+        changeNamePreDef(3);
+        changeNamePreDef(4);
+
+
+
         //-----------------------------------------INIT Variablen---------------------------------------------------
 
 
@@ -124,7 +134,7 @@ public class SelectValuesStart extends AppCompatActivity {
                 if (i < 11) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(SelectValuesStart.this);
                     customName = new EditText(SelectValuesStart.this);
-                    customName.setInputType(InputType.TYPE_CLASS_TEXT);
+                    customName.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
                     dialog.setView(customName);
                     dialog.setCancelable(true);
                     dialog.setTitle("Please enter a name");
@@ -134,7 +144,7 @@ public class SelectValuesStart extends AppCompatActivity {
                             dialogInterface.cancel();
                         }
                     });
-                    dialog.setPositiveButton("Set", new DialogInterface.OnClickListener() {
+                    dialog.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
                         @SuppressLint("SetTextI18n")
                         @Override
                         public void onClick(DialogInterface dialogInterface, int j) {
@@ -143,8 +153,18 @@ public class SelectValuesStart extends AppCompatActivity {
                                     if (customName.getText().toString().contains(" ")){
                                         Toast.makeText(SelectValuesStart.this, "No space allowed", Toast.LENGTH_SHORT).show();
                                         return;
+                                        }
+                                    }
+
+                                char[] tmp = customName.getText().toString().toCharArray();
+                                for (char c : tmp) {
+                                    if(!Character.isLetter(c)) {
+                                        Toast.makeText(SelectValuesStart.this, "No valid name", Toast.LENGTH_SHORT).show();
+                                        return;
                                     }
                                 }
+
+
                                 arr[i].setText(customName.getText().toString());
                                 arr[i].setAlpha(1);
                                 arr[i].setClickable(true);
@@ -186,5 +206,58 @@ public class SelectValuesStart extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+
+    private void changeNamePreDef(int i){
+
+        arr[i].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(SelectValuesStart.this);
+                customName = new EditText(SelectValuesStart.this);
+                customName.setInputType(InputType.TYPE_CLASS_TEXT);
+                dialog.setView(customName);
+                dialog.setCancelable(true);
+                dialog.setTitle("Change: " + arr[i].getText().toString() );
+                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int j) {
+                        dialogInterface.cancel();
+                    }
+                });
+                dialog.setPositiveButton("Set", new DialogInterface.OnClickListener() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int j) {
+                        if (!customName.getText().toString().equals("")) {
+                            for (int k = 0; k < customName.getText().length(); k++) {
+                                if (customName.getText().toString().contains(" ")){
+                                    Toast.makeText(SelectValuesStart.this, "No space allowed", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                            }
+
+                            char[] tmp = customName.getText().toString().toCharArray();
+                            for (char c : tmp) {
+                                if(!Character.isLetter(c)) {
+                                    Toast.makeText(SelectValuesStart.this, "No valid name", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                            }
+                            arr[i].setText(customName.getText().toString());
+                            arr[i].setAlpha(1);
+                            arr[i].setClickable(true);
+                            arr[i].setChecked(true);
+                            textCountLeft.setText(counter + " left");
+                        }
+
+                    }
+                });
+                dialog.show();
+
+            }
+        });
+
     }
 }
