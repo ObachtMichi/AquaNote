@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 
 public class SelectValuesStart extends AppCompatActivity {
@@ -269,6 +270,7 @@ public class SelectValuesStart extends AppCompatActivity {
                             arr[i].setAlpha(1);
                             arr[i].setClickable(true);
                             arr[i].setChecked(true);
+
                         }
 
                     }

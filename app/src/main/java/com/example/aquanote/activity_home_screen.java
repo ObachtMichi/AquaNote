@@ -29,6 +29,7 @@ import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 @RequiresApi(api = Build.VERSION_CODES.O)
@@ -178,15 +179,23 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                             textAddedSuc.setVisibility(View.VISIBLE);
                             arrEditText[i].setText("");
 
+
                         } catch (Exception e) {
                             textAddedSuc.setVisibility(View.VISIBLE);
                             textAddedSuc.setText("Not valid");
                             System.out.println("NOT VALID");
                         }
                     }
-                    //}
                 }
-                System.out.println(arrComplete.toString());
+
+
+                textAddedSuc.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        textAddedSuc.setVisibility(View.INVISIBLE);
+                    }
+                }, 2000);
+
             }
         });
     }
