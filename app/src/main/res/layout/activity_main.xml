@@ -23,7 +23,9 @@
         android:layout_height="213dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:scaleType="centerCrop"
         android:layout_weight="1.5"
+        android:background="@android:color/transparent"
         android:src="@android:drawable/ic_menu_gallery"
         tools:ignore="SpeakableTextPresentCheck" />
 

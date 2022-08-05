@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //SKIP EVTL
-
         if (checkDBExist()) skipIfDBExists();
 
         nameAquaInput = (EditText) findViewById(R.id.nameAquaInput);

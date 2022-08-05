@@ -188,7 +188,6 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
                     }
                 }
 
-
                 textAddedSuc.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -270,16 +269,6 @@ public class activity_home_screen extends AppCompatActivity implements TextWatch
         }
     }
 
-
-    public static byte[] getBytes(Bitmap bitmap) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
-        return stream.toByteArray();
-    }
-
-    public static Bitmap getImage(byte[] image) {
-        return BitmapFactory.decodeByteArray(image, 0, image.length);
-    }
 
     public void saveImageToInternalStorage(Bitmap image) {
 
