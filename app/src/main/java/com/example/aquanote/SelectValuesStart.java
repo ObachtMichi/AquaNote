@@ -19,6 +19,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 
 public class SelectValuesStart extends AppCompatActivity {
 
@@ -167,7 +169,7 @@ public class SelectValuesStart extends AppCompatActivity {
                                 }
 
                                 for (int k = 0; k < arr.length; k++) {
-                                    if (customName.getText().toString().equals(arr[k].getText().toString())){
+                                    if (customName.getText().toString().toUpperCase(Locale.ROOT).equals(arr[k].getText().toString().toUpperCase(Locale.ROOT))){
                                         Toast.makeText(SelectValuesStart.this, "Name already in use", Toast.LENGTH_SHORT).show();
                                         return;
                                     }
@@ -257,7 +259,7 @@ public class SelectValuesStart extends AppCompatActivity {
                             }
 
                             for (int k = 0; k < arr.length; k++) {
-                                if (customName.getText().toString().equals(arr[k].getText().toString())){
+                                if (customName.getText().toString().toUpperCase(Locale.ROOT).equals(arr[k].getText().toString().toUpperCase(Locale.ROOT))){
                                     Toast.makeText(SelectValuesStart.this, "Name already in use", Toast.LENGTH_SHORT).show();
                                     arr[i].setChecked(false);
                                     return;
