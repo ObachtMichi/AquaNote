@@ -9,9 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -20,8 +23,10 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 
@@ -40,6 +45,10 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
     private static String currentValue;
     private Button btn_AddEntry;
     private static int currVal;
+    int year1, hour1, month1, minute1, day1;
+    int nYear, nHour, nMonth, nMinute, nDay;
+    String date1;
+
 
     //-----------------------------------------Variablen---------------------------------------------------
 
@@ -158,11 +167,20 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
         btn_AddEntry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                year1 = cal.get(Calendar.YEAR);
+                month1 = cal.get(Calendar.MONTH);
+                day1 = cal.get(Calendar.DAY_OF_MONTH);
+                hour1 = cal.get(Calendar.HOUR_OF_DAY);
+                minute1 = cal.get(Calendar.MINUTE);
+                date1 = "ERROR";
 
                 final Dialog dialogAddNew = new Dialog(view.getContext());
                 dialogAddNew.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialogAddNew.setCancelable(true);
                 dialogAddNew.setContentView(R.layout.add_new_entry);
+                Button dateTimePickerButton = dialogAddNew.findViewById(R.id.dateTimePickerButton);
+                dateTimePickerButton.setText(AdapterClass.makeDataString(day1, month1, year1, hour1, minute1));
                 dialogAddNew.show();
 
 
@@ -181,7 +199,7 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
                     @Override
                     public void onClick(View view) {
                         if(!(addValue.getText().toString().equals("") || addValue.getText().toString().equals("."))){
-                            Value newValue = new Value(currentValue, Float.parseFloat(addValue.getText().toString()));
+                            Value newValue = new Value(-1, Float.parseFloat(addValue.getText().toString()), currentValue, date1);
                             dataBaseHelper.addEntry(newValue);
                             dialogAddNew.dismiss();
                             finish();
@@ -193,7 +211,45 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
                     }
                 });
 
+                dateTimePickerButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
+
+
+                        TimePickerDialog timePickerDialog = new TimePickerDialog(view.getContext(),
+                                new TimePickerDialog.OnTimeSetListener() {
+
+                                    @Override
+                                    public void onTimeSet(TimePicker view, int hourOfDay,
+                                                          int minute) {
+
+                                        nHour = hourOfDay;
+                                        nMinute = minute;
+                                        date1 = AdapterClass.makeDataString(nDay, nMonth, nYear, nHour, nMinute);
+                                        dateTimePickerButton.setText(date1);
+                                    }
+                                }, hour1, minute1, true);
+
+                        timePickerDialog.show();
+
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(view.getContext(),
+                                new DatePickerDialog.OnDateSetListener() {
+
+                                    @SuppressLint("SetTextI18n")
+                                    @Override
+                                    public void onDateSet(DatePicker view, int year,
+                                                          int monthOfYear, int dayOfMonth) {
+                                        nYear = year;
+                                        nMonth = monthOfYear + 1;
+                                        nDay = dayOfMonth;
+
+                                    }
+                                }, year1, month1, day1);
+                        datePickerDialog.show();
+
+                    }
+                });
 
             }
         });

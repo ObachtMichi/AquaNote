@@ -15,17 +15,22 @@
         android:text="Add new Entry"/>
 
 
-    <EditText
-        android:id="@+id/editTextDate"
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="DATUM?"
-         />
+        android:id="@+id/dateTimePickerButton"
+        android:layout_marginLeft="10dp"
+        style="?android:spinnerStyle"
+        android:text="JAN 01 2000"
+        android:gravity="center"
+        android:fontFamily="@font/montserrat"
+        android:textSize="20dp" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Value"
+        android:textSize="20dp"
         android:inputType="numberDecimal"
         android:fontFamily="@font/montserrat"
         android:id="@+id/addValue" />

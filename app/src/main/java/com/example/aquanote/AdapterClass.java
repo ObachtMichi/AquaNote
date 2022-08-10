@@ -239,11 +239,11 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
 
 
 
-    private String makeDataString(int day, int month, int year, int hour, int minute){
+    public static String makeDataString(int day, int month, int year, int hour, int minute){
         return getMonthFormat(month) + " " + day + " " + year + " at " + hour + ":" + minute;
     }
 
-    private String getMonthFormat(int month) {
+    private static String getMonthFormat(int month) {
             if(month == 1)
                 return "Jan";
             if(month == 2)
