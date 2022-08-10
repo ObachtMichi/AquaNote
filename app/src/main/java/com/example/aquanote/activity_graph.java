@@ -173,7 +173,7 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
                 day1 = cal.get(Calendar.DAY_OF_MONTH);
                 hour1 = cal.get(Calendar.HOUR_OF_DAY);
                 minute1 = cal.get(Calendar.MINUTE);
-                date1 = "ERROR";
+                date1 = AdapterClass.makeDataString(day1, month1, year1, hour1, minute1);
 
                 final Dialog dialogAddNew = new Dialog(view.getContext());
                 dialogAddNew.requestWindowFeature(Window.FEATURE_NO_TITLE);
