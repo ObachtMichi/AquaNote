@@ -2,23 +2,28 @@ package com.example.aquanote;
 
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.icu.util.Calendar;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -31,10 +36,18 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     }
     private Value val;
 
+
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView value, date, typ;
         private Button buttonSelectEntry;
         private String aquariumName = MainActivity.getName();
+        private DatePickerDialog datePickerDialog;
+        private Button dateButton;
+        int year1, hour1, month1, minute1, day1;
+        int nYear, nHour, nMonth, nMinute, nDay;
+        String date1;
+
+
 
         public MyViewHolder(final View view){
             super(view);
@@ -42,6 +55,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
             date = view.findViewById(R.id.textListDate);
             buttonSelectEntry = view.findViewById(R.id.buttonSelectEntry);
             typ = view.findViewById(R.id.textValueTyp);
+
 
             buttonSelectEntry.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -54,12 +68,63 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                     dialog.setCancelable(true);
                     dialog.setContentView(R.layout.dialog_value_type);
                     EditText editValue = dialog.findViewById(R.id.editValue);
+                    dateButton = dialog.findViewById(R.id.datePickerButton);
                     editValue.setHint(value.getText().toString());
+                    dateButton.setText(date.getText().toString());
                     dialog.show();
 
                     final Button btn_Cancel = dialog.findViewById(R.id.btn_Cancel);
                     final Button btn_Accept = dialog.findViewById(R.id.btn_Accept);
                     final Button btn_Delete = dialog.findViewById(R.id.btn_Delete);
+
+
+                    Calendar cal = Calendar.getInstance();
+                    year1 = cal.get(Calendar.YEAR);
+                    month1 = cal.get(Calendar.MONTH);
+                    day1 = cal.get(Calendar.DAY_OF_MONTH);
+                    hour1 = cal.get(Calendar.HOUR_OF_DAY);
+                    minute1 = cal.get(Calendar.MINUTE);
+
+
+                    dateButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            TimePickerDialog timePickerDialog = new TimePickerDialog(view.getContext(),
+                                    new TimePickerDialog.OnTimeSetListener() {
+
+                                        @Override
+                                        public void onTimeSet(TimePicker view, int hourOfDay,
+                                                              int minute) {
+
+                                            nHour = hourOfDay;
+                                            nMinute = minute;
+                                            date1 = makeDataString(nDay, nMonth, nYear, nHour, nMinute);
+                                            dateButton.setText(date1);
+                                        }
+                                    }, hour1, minute1, false);
+
+                            timePickerDialog.show();
+
+                            DatePickerDialog datePickerDialog = new DatePickerDialog(view.getContext(),
+                                    new DatePickerDialog.OnDateSetListener() {
+
+                                        @SuppressLint("SetTextI18n")
+                                        @Override
+                                        public void onDateSet(DatePicker view, int year,
+                                                              int monthOfYear, int dayOfMonth) {
+                                            nYear = year;
+                                            nMonth = monthOfYear + 1;
+                                            nDay = dayOfMonth;
+
+                                        }
+                                    }, year1, month1, day1);
+                            datePickerDialog.show();
+
+                        }
+                    }
+
+
+                    );
 
 
 
@@ -169,6 +234,42 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
         return valueList.size();
     }
 
+
+
+
+    private String makeDataString(int day, int month, int year, int hour, int minute){
+        return getMonthFormat(month) + " " + day + " " + year + " at " + hour + ":" + minute;
+    }
+
+    private String getMonthFormat(int month) {
+            if(month == 1)
+                return "JAN";
+            if(month == 2)
+                return "FEB";
+            if(month == 3)
+                return "MAR";
+            if(month == 4)
+                return "APR";
+            if(month == 5)
+                return "MAY";
+            if(month == 6)
+                return "JUN";
+            if(month == 7)
+                return "JUL";
+            if(month == 8)
+                return "AUG";
+            if(month == 9)
+                return "SEP";
+            if(month == 10)
+                return "OCT";
+            if(month == 11)
+                return "NOV";
+            if(month == 12)
+                return "DEC";
+
+            //default should never happen
+            return "JAN";
+        }
 }
 
 

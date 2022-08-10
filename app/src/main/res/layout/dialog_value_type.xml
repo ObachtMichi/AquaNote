@@ -12,14 +12,25 @@
         android:fontFamily="@font/montserrat"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:text="Edit or Delete value"/>
+        android:text="Edit value and date"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="ERROR"
+        android:textSize="20dp"
         android:inputType="numberDecimal"
         android:fontFamily="@font/montserrat"
         android:id="@+id/editValue" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/datePickerButton"
+        style="?android:spinnerStyle"
+        android:text="JAN 01 2000"
+        android:gravity="center"
+        android:fontFamily="@font/montserrat"
+        android:textSize="20dp" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
