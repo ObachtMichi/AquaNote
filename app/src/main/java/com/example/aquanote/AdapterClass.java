@@ -84,6 +84,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                     day1 = cal.get(Calendar.DAY_OF_MONTH);
                     hour1 = cal.get(Calendar.HOUR_OF_DAY);
                     minute1 = cal.get(Calendar.MINUTE);
+                    date1 = date.getText().toString();
 
 
                     dateButton.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +102,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                                             date1 = makeDataString(nDay, nMonth, nYear, nHour, nMinute);
                                             dateButton.setText(date1);
                                         }
-                                    }, hour1, minute1, false);
+                                    }, hour1, minute1, true);
 
                             timePickerDialog.show();
 
@@ -184,11 +185,12 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                                 Toast.makeText(view.getContext(), "Not Valid", Toast.LENGTH_SHORT).show();
                             } else {
                                 if (!(editValue.getText().toString().equals(""))) {
-                                    Value nValue = new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString(), Float.valueOf(editValue.getText().toString()));
+                                    Value nValue = new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), Float.parseFloat(editValue.getText().toString()), typ.getText().toString(), date1);
                                     ag.changeValue(nValue);
-                                } else {
-                                    Value nValue = new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), typ.getText().toString(), Float.valueOf(value.getText().toString()));
-                                    ag.changeValue(nValue);
+                                    ag.changeDate(nValue);
+                                } else{
+                                    Value nValue = new Value(Integer.parseInt(buttonSelectEntry.getText().toString()), Float.parseFloat(value.getText().toString()), typ.getText().toString(), date1);
+                                    ag.changeDate(nValue);
                                 }
 
                                 dialog.dismiss();
@@ -243,32 +245,32 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
 
     private String getMonthFormat(int month) {
             if(month == 1)
-                return "JAN";
+                return "Jan";
             if(month == 2)
-                return "FEB";
+                return "Feb";
             if(month == 3)
-                return "MAR";
+                return "Mar";
             if(month == 4)
-                return "APR";
+                return "Apr";
             if(month == 5)
-                return "MAY";
+                return "May";
             if(month == 6)
-                return "JUN";
+                return "Jun";
             if(month == 7)
-                return "JUL";
+                return "Jul";
             if(month == 8)
-                return "AUG";
+                return "Aug";
             if(month == 9)
-                return "SEP";
+                return "Sep";
             if(month == 10)
-                return "OCT";
+                return "Oct";
             if(month == 11)
-                return "NOV";
+                return "Nov";
             if(month == 12)
-                return "DEC";
+                return "Dec";
 
             //default should never happen
-            return "JAN";
+            return "Jan";
         }
 }
 

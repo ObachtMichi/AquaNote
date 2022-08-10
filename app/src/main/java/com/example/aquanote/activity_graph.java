@@ -146,7 +146,11 @@ public class activity_graph extends AppCompatActivity implements AdapterView.OnI
     }
 
     public void changeValue(Value value){
-        dataBaseHelper.changeEntry(value);
+        dataBaseHelper.changeEntryValue(value);
+    }
+
+    public void changeDate(Value value){
+        dataBaseHelper.changeEntryDate(value);
     }
 
 

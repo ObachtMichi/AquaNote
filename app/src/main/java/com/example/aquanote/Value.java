@@ -1,6 +1,8 @@
 package com.example.aquanote;
 
 
+import android.annotation.SuppressLint;
+
 import androidx.annotation.NonNull;
 
 import java.text.SimpleDateFormat;
@@ -11,6 +13,7 @@ public class Value {
     private int id;
     private String valueType;
     private float valueNumber;
+    @SuppressLint("SimpleDateFormat")
     SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy 'at' H:m");
     String date;
 
@@ -20,7 +23,7 @@ public class Value {
         this.valueType = valueType;
         this.valueNumber = valueNumber;
     }
-    public Value(int id, String date, float valueNumber, String valueType){
+    public Value(int id, float valueNumber, String valueType , String date){
         this.id = id;
         this.date = date;
         this.valueNumber = valueNumber;

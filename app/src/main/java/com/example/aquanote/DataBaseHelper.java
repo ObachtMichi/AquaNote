@@ -120,7 +120,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
                 float value = cursor.getFloat(1);
                 String datum = cursor.getString(2);
                 String typ = cursor.getString(3);
-                retListe.add(new Value(id, datum, value, typ));
+                retListe.add(new Value(id, value, typ, datum));
             } while (cursor.moveToPrevious());
 
         }
@@ -143,7 +143,7 @@ public class DataBaseHelper extends SQLiteOpenHelper{
     }
 
 
-    public Boolean changeEntry(Value value) {
+    public Boolean changeEntryValue(Value value) {
         SQLiteDatabase db = this.getWritableDatabase();
         String queryString = "UPDATE " + value.getValueType() + " SET VALUE_NUMBER = '" + value.getValueNumber() + "' WHERE ID= " + value.getId();
         Cursor cursor = db.rawQuery(queryString, null);
@@ -155,4 +155,14 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         }
     }
 
+    public Boolean changeEntryDate(Value value) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "UPDATE " + value.getValueType() + " SET VALUE_DATE = '" + value.getDate() + "' WHERE ID= " + value.getId();
+        Cursor cursor = db.rawQuery(queryString, null);
+        if (cursor.moveToFirst()){
+            return true;
+        } else{
+            return false;
+        }
+    }
 }
